@@ -1,0 +1,35 @@
+.secao {
+  background: var(--marrom);
+  color: var(--branco);
+  padding: clamp(3.5rem, 8vw, 6rem) 1.5rem;
+  text-align: center;
+}
+.dentro {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+.estrelas {
+  display: flex;
+  gap: 0.45rem;
+}
+.estrela {
+  fill: var(--lilas);
+}
+.titulo {
+  font: 400 clamp(1.9rem, 4.5vw, 2.8rem) / 1.12 var(--font-family-display);
+}
+.texto {
+  max-width: 52ch;
+  font-weight: 300;
+  opacity: 0.88;
+  font-size: 1.05rem;
+}
+.dentro a {
+  white-space: normal;
+  text-align: center;
+  line-height: 1.3;
+}

@@ -1,0 +1,57 @@
+.duas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem;
+}
+.cartao {
+  background: var(--branco);
+  border: 1px solid var(--linha);
+  border-radius: 4px;
+  padding: 2.2rem;
+  scroll-margin-top: 100px;
+}
+.titulo {
+  font: 400 clamp(1.7rem, 3vw, 2.2rem) / 1.12 var(--font-family-display);
+  color: var(--marrom);
+}
+.texto {
+  color: var(--texto-suave);
+  font-weight: 300;
+  font-size: 1.04rem;
+  margin-top: 0.9rem;
+}
+.acoes {
+  margin-top: 1.5rem;
+}
+.etapas {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.6rem;
+}
+.etapa {
+  border-top: 1px solid var(--madeira);
+  padding-top: 1.2rem;
+}
+.etapaTitulo {
+  font: 400 1.4rem/1.2 var(--font-family-display);
+  color: var(--marrom);
+  margin-bottom: 0.4rem;
+}
+.etapaTexto {
+  color: var(--texto-suave);
+  font-weight: 300;
+  font-size: 0.97rem;
+}
+@media (max-width: 1020px) {
+  .duas {
+    grid-template-columns: 1fr;
+  }
+  .etapas {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 560px) {
+  .etapas {
+    grid-template-columns: 1fr;
+  }
+}

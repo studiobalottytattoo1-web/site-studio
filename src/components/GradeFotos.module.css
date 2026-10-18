@@ -1,0 +1,27 @@
+.grade {
+  display: grid;
+  gap: 1rem;
+}
+.c2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.c3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.c4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+.item {
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--marrom);
+}
+@media (max-width: 800px) {
+  .c3,
+  .c4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grade {
+    gap: 0.7rem;
+  }
+}

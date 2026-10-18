@@ -1,0 +1,49 @@
+.local {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 3rem;
+  align-items: center;
+}
+.endereco {
+  font: 400 1.6rem/1.25 var(--font-family-display);
+  color: var(--marrom);
+  max-width: 24ch;
+}
+.texto {
+  margin-top: 0.8rem;
+  color: var(--texto-suave);
+  font-weight: 300;
+}
+.redes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.2rem;
+  margin-top: 1.4rem;
+}
+.redes a {
+  color: var(--verde);
+  font-weight: 500;
+  text-underline-offset: 4px;
+}
+.acoes {
+  margin-top: 1.6rem;
+}
+.mapa {
+  aspect-ratio: 4 / 3;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--linha);
+  background: var(--marrom);
+}
+.mapa iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+@media (max-width: 900px) {
+  .local {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}

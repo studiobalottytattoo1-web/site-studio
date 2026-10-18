@@ -1,0 +1,50 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  background: var(--algodao);
+  color: var(--preto);
+  font-family: var(--font-family-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img,
+svg,
+iframe {
+  display: block;
+  max-width: 100%;
+}
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+button {
+  cursor: pointer;
+  background: none;
+  border: 0;
+}
+a {
+  color: inherit;
+}
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 400;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

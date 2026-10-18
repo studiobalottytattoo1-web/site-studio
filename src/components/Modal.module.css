@@ -1,0 +1,61 @@
+.fundo {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(36, 35, 33, 0.62);
+  backdrop-filter: blur(4px);
+  animation: aparece 0.2s ease;
+}
+.caixa {
+  position: relative;
+  width: min(560px, 100%);
+  max-height: calc(100dvh - 2rem);
+  overflow-y: auto;
+  background: var(--branco);
+  color: var(--preto);
+  border-radius: 6px;
+  box-shadow: var(--shadow-lg);
+  animation: sobe 0.25s ease;
+}
+.caixa:focus {
+  outline: none;
+}
+.fechar {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 254, 250, 0.92);
+  color: var(--marrom);
+  box-shadow: 0 1px 6px rgba(36, 35, 33, 0.2);
+}
+.fechar:hover {
+  background: var(--algodao);
+}
+.fechar:focus-visible {
+  outline: 2px solid var(--lilas);
+  outline-offset: 2px;
+}
+@keyframes aparece {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes sobe {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fundo,
+  .caixa {
+    animation: none;
+  }
+}

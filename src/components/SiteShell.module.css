@@ -1,0 +1,14 @@
+.shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--algodao);
+  color: var(--preto);
+  font-family: var(--font-family-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.main {
+  flex: 1;
+}

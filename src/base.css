@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Outfit:wght@300;400;500;600&display=swap');
+
+:root {
+  --z-overlay: 400;
+  --z-spotlight: 1000;
+  --z-critical: 2000;
+
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+
+  --background: #f3efe6;
+  --foreground: #242321;
+  --surface: #fffefa;
+  --surface-foreground: #242321;
+  --sidebar: #fffefa;
+  --sidebar-foreground: #242321;
+  --card: #fffefa;
+  --card-foreground: #242321;
+  --popup: #fffefa;
+  --popup-foreground: #242321;
+  --primary: #526653;
+  --primary-foreground: #fffefa;
+  --secondary: #a77951;
+  --secondary-foreground: #fffefa;
+  --accent: #b8a5c9;
+  --accent-foreground: #242321;
+  --muted: #ebe5d8;
+  --muted-foreground: #5c5853;
+  --success: #526653;
+  --success-foreground: #fffefa;
+  --error: #9b3d2e;
+  --error-foreground: #fffefa;
+  --warning: #a77951;
+  --warning-foreground: #fffefa;
+  --info: #50392f;
+  --info-foreground: #fffefa;
+  --info-hover: #6b5244;
+  --info-active: #3d2c23;
+  --border: #d9d1c2;
+  --shadow: 0 1px 0 rgba(80, 57, 47, 0.06);
+  --shadow-md: 0 10px 30px rgba(80, 57, 47, 0.12);
+  --shadow-lg: 0 24px 60px rgba(36, 35, 33, 0.18);
+  --shadow-focus: 0 0 0 3px rgba(82, 102, 83, 0.35);
+
+  --font-family-base: 'Outfit', system-ui, sans-serif;
+  --font-family-display: 'Marcellus', Georgia, serif;
+  --font-family-monospace: ui-monospace, Menlo, monospace;
+  --font-family-cursive: 'Marcellus', Georgia, serif;
+
+  --algodao: #f3efe6;
+  --branco: #fffefa;
+  --madeira: #a77951;
+  --madeira-texto: #8a5e3a;
+  --marrom: #50392f;
+  --preto: #242321;
+  --verde: #526653;
+  --lilas: #b8a5c9;
+  --linha: rgba(80, 57, 47, 0.16);
+  --texto-suave: #5d5249;
+
+  --radius-sm: 6px;
+  --radius: 12px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  --animation-duration-fast: 160ms;
+  --animation-duration-normal: 300ms;
+  --animation-duration-slow: 600ms;
+
+  --chart-color-1: #526653;
+  --chart-color-2: #a77951;
+  --chart-color-3: #50392f;
+  --chart-color-4: #b8a5c9;
+  --chart-color-5: #8a9a8b;
+}
+
+.dark {
+  --background: #242321;
+  --foreground: #f3efe6;
+  --surface: #2e2c29;
+  --surface-foreground: #f3efe6;
+  --card: #2e2c29;
+  --card-foreground: #f3efe6;
+  --primary: #8fa38f;
+  --primary-foreground: #242321;
+  --muted: #37342f;
+  --muted-foreground: #bdb5a7;
+  --border: #4a4540;
+}

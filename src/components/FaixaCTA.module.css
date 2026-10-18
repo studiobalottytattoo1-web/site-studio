@@ -1,0 +1,24 @@
+.faixa {
+  background: var(--verde);
+  color: var(--branco);
+  padding: 3.5rem 1.5rem;
+}
+.dentro {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.titulo {
+  font: 400 clamp(1.7rem, 3.4vw, 2.4rem) / 1.12 var(--font-family-display);
+  max-width: 22ch;
+}
+.texto {
+  margin-top: 0.5rem;
+  max-width: 52ch;
+  font-weight: 300;
+  color: rgba(255, 254, 250, 0.88);
+}

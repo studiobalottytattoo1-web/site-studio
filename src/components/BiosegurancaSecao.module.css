@@ -1,0 +1,32 @@
+.grade {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.2rem;
+}
+.item svg {
+  width: 30px;
+  height: 30px;
+  color: var(--verde);
+  margin-bottom: 1rem;
+}
+.nome {
+  font: 400 1.35rem/1.2 var(--font-family-display);
+  color: var(--marrom);
+  margin-bottom: 0.4rem;
+}
+.texto {
+  font-size: 0.96rem;
+  font-weight: 300;
+  color: var(--texto-suave);
+}
+@media (max-width: 1020px) {
+  .grade {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 640px) {
+  .grade {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+  }
+}

@@ -1,0 +1,156 @@
+.wrap {
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  right: 14px;
+  z-index: 50;
+}
+.barra {
+  position: relative;
+  z-index: 2;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 0.45rem 0.55rem 0.45rem 1rem;
+  background: rgba(255, 254, 250, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 254, 250, 0.6);
+  border-radius: 999px;
+  box-shadow: 0 10px 40px rgba(36, 35, 33, 0.18);
+}
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  color: var(--marrom);
+  flex-shrink: 0;
+}
+.logoImg {
+  object-fit: contain;
+  display: block;
+}
+.textoMarca {
+  display: flex;
+  flex-direction: column;
+}
+.nome {
+  font: 400 1.15rem/1 var(--font-family-display);
+}
+.sub {
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  color: var(--madeira-texto);
+  margin-top: 3px;
+  white-space: nowrap;
+}
+.links {
+  display: flex;
+  gap: 1.15rem;
+  margin-left: auto;
+  font-size: 0.86rem;
+}
+.link {
+  text-decoration: none;
+  color: var(--preto);
+  white-space: nowrap;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid transparent;
+}
+.link:hover,
+.ativo {
+  border-color: var(--madeira);
+}
+.link:focus-visible {
+  outline: 2px solid var(--verde);
+  outline-offset: 3px;
+}
+.cta {
+  flex-shrink: 0;
+}
+.burger {
+  display: none;
+  margin-left: auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 0;
+  background: var(--algodao);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.burger i {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: var(--marrom);
+  margin: 5px auto;
+  transition: transform 0.25s;
+}
+.x1 {
+  transform: translateY(3.2px) rotate(45deg);
+}
+.x2 {
+  transform: translateY(-3.2px) rotate(-45deg);
+}
+.cheio {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: var(--preto);
+  color: var(--branco);
+  padding: 6.5rem 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s, visibility 0.25s;
+  overflow-y: auto;
+}
+.cheioAberto {
+  opacity: 1;
+  visibility: visible;
+}
+.cheioLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.cheioLink {
+  font: 400 1.6rem/1.15 var(--font-family-display);
+  color: var(--branco);
+  text-decoration: none;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid rgba(255, 254, 250, 0.12);
+}
+.cheioLink:hover {
+  color: var(--lilas);
+}
+.cheioCta {
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+@media (max-width: 1260px) {
+  .links,
+  .cta {
+    display: none;
+  }
+  .burger {
+    display: block;
+  }
+}
+@media (max-width: 520px) {
+  .sub {
+    display: none;
+  }
+}
+@media (min-width: 1261px) {
+  .cheio {
+    display: none;
+  }
+}

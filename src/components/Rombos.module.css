@@ -1,0 +1,33 @@
+.fila {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 2.4rem;
+  padding-top: 0.5rem;
+}
+.rombo {
+  width: min(23vw, 260px);
+  aspect-ratio: 1;
+  margin: 0 -2.2%;
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  background: var(--marrom);
+  flex-shrink: 0;
+}
+.rombo:nth-child(even) {
+  transform: translateY(2.4rem);
+}
+@media (max-width: 640px) {
+  .fila {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding: 0 1.25rem 3.4rem;
+    margin-inline: -1.25rem;
+    scrollbar-width: none;
+  }
+  .rombo {
+    width: 62vw;
+    margin: 0 -9vw;
+  }
+  .rombo:first-child {
+    margin-left: 0;
+  }
+}

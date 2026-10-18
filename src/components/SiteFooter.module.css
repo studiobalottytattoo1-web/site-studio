@@ -1,0 +1,63 @@
+.rodape {
+  background: #1a1918;
+  color: rgba(255, 254, 250, 0.72);
+  padding: 4rem 1.5rem 2rem;
+  font-weight: 300;
+  font-size: 0.93rem;
+}
+.grade {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1.2fr;
+  gap: 3rem;
+}
+.coluna {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+.logo {
+  color: var(--madeira);
+  margin-bottom: 0.6rem;
+}
+.marca {
+  font: 400 1.5rem/1.1 var(--font-family-display);
+  color: var(--branco);
+}
+.sub {
+  color: var(--lilas);
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+.texto {
+  max-width: 34ch;
+}
+.titulo {
+  font: 400 1.15rem var(--font-family-display);
+  color: var(--branco);
+  margin-bottom: 0.4rem;
+}
+.link {
+  color: rgba(255, 254, 250, 0.8);
+  text-decoration: none;
+  width: fit-content;
+}
+.link:hover {
+  color: var(--branco);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.direitos {
+  max-width: 1180px;
+  margin: 3rem auto 0;
+  padding-top: 1.4rem;
+  border-top: 1px solid rgba(255, 254, 250, 0.14);
+  font-size: 0.82rem;
+}
+@media (max-width: 800px) {
+  .grade {
+    grid-template-columns: 1fr;
+    gap: 2.2rem;
+  }
+}

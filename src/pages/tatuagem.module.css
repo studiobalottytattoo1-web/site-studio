@@ -1,0 +1,120 @@
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.2rem;
+  border: 1px solid rgba(80, 57, 47, 0.3);
+  border-radius: 999px;
+  color: var(--preto);
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.chip i {
+  width: 9px;
+  height: 9px;
+  border: 1px solid var(--marrom);
+  transform: rotate(45deg);
+}
+.chip:hover {
+  background: var(--verde);
+  color: #fff;
+  border-color: var(--verde);
+}
+.chip:hover i {
+  background: var(--lilas);
+  border-color: var(--lilas);
+}
+.duas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem;
+}
+.cartao {
+  background: var(--branco);
+  border: 1px solid var(--linha);
+  border-radius: 4px;
+  padding: 2rem;
+}
+.cartaoTitulo {
+  font: 400 1.6rem/1.15 var(--font-family-display);
+  color: var(--marrom);
+}
+.texto {
+  color: var(--texto-suave);
+  font-weight: 300;
+  font-size: 1.04rem;
+  margin-top: 0.9rem;
+  max-width: 56ch;
+}
+.lista {
+  margin: 1rem 0 0 1.1rem;
+  color: var(--texto-suave);
+  font-weight: 300;
+  display: grid;
+  gap: 0.5rem;
+}
+.linkSub {
+  color: var(--verde);
+  font-weight: 500;
+  text-underline-offset: 4px;
+}
+.acoes {
+  margin-top: 1.5rem;
+}
+.camuflagem {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+.camuflagemFoto {
+  aspect-ratio: 4 / 4.4;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--marrom);
+}
+.etapas {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.6rem;
+}
+.etapa {
+  border-top: 1px solid var(--madeira);
+  padding-top: 1.2rem;
+}
+.numero {
+  font: 400 1.1rem var(--font-family-display);
+  color: var(--madeira-texto);
+}
+.etapaTitulo {
+  font: 400 1.4rem/1.2 var(--font-family-display);
+  color: var(--marrom);
+  margin: 0.4rem 0;
+}
+.etapaTexto {
+  color: var(--texto-suave);
+  font-weight: 300;
+  font-size: 0.97rem;
+}
+@media (max-width: 1020px) {
+  .duas,
+  .camuflagem {
+    grid-template-columns: 1fr;
+  }
+  .camuflagemFoto {
+    max-width: 420px;
+  }
+  .etapas {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 560px) {
+  .etapas {
+    grid-template-columns: 1fr;
+  }
+}

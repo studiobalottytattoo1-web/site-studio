@@ -1,0 +1,33 @@
+.grade {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+.cartao {
+  border: 1px solid rgba(255, 254, 250, 0.22);
+  border-radius: 4px;
+  padding: 1.7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.funcao {
+  color: var(--lilas);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.nome {
+  font: 400 1.9rem/1.1 var(--font-family-display);
+  color: var(--branco);
+}
+.numero {
+  font-weight: 300;
+  color: rgba(255, 254, 250, 0.85);
+  margin-bottom: 0.8rem;
+}
+@media (max-width: 760px) {
+  .grade {
+    grid-template-columns: 1fr;
+  }
+}
