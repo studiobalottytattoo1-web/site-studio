@@ -118,11 +118,7 @@ export default function QuemSomosPage() {
 
       <Bloco>
         <div className={styles.parceria}>
-          <svg viewBox="0 0 200 200" fill="none" stroke="#A77951" strokeWidth="1.2" aria-hidden="true">
-            <path d="M100 8 192 100 100 192 8 100Z" />
-            <path d="M100 40 160 100 100 160 40 100Z" stroke="#B8A5C9" />
-            <circle cx="100" cy="100" r="3" fill="#B8A5C9" stroke="none" />
-          </svg>
+          <img src={fotos.logo ?? ""} alt="Logo do Studio Balotty Tattoo e Naju Piercer" className={styles.parceriaLogo} loading="lazy" />
           <div>
             <h2 className={styles.parceriaTitulo}>Profissional independente? Tem sala para você.</h2>
             <p className={styles.parceriaTexto}>

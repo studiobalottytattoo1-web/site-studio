@@ -127,9 +127,10 @@
   gap: 2.5rem;
   align-items: center;
 }
-.parceria svg {
-  width: 110px;
-  height: 110px;
+.parceriaLogo {
+  width: 130px;
+  height: auto;
+  display: block;
 }
 .parceriaTitulo {
   font: 400 clamp(1.7rem, 3.2vw, 2.4rem) / 1.12 var(--font-family-display);
@@ -157,9 +158,8 @@
     grid-template-columns: 1fr;
     padding: 2rem;
   }
-  .parceria svg {
-    width: 80px;
-    height: 80px;
+  .parceriaLogo {
+    width: 96px;
   }
   .parceria > :last-child {
     justify-self: start;

@@ -80,7 +80,7 @@ export default function InicioPage() {
 
           <article className={styles.pilar}>
             <div className={styles.pilarFoto}>
-              <FotoSlot src={fotos.piercing[0]} alt="Joia de flor em ouro e brilhantes aplicada na orelha" />
+              <FotoSlot src={fotos.najuCartao} alt="Naju, body piercer" posicao="50% 20%" />
             </div>
             <div className={styles.pilarCorpo}>
               <span className={styles.quem}>Com a Naju</span>
@@ -96,13 +96,8 @@ export default function InicioPage() {
           </article>
 
           <article className={styles.pilar}>
-            <div className={`${styles.pilarFoto} ${styles.ornamento}`}>
-              <svg viewBox="0 0 200 200" fill="none" stroke="#A77951" strokeWidth="1.2" aria-hidden="true">
-                <path d="M100 8 192 100 100 192 8 100Z" />
-                <path d="M100 34 166 100 100 166 34 100Z" stroke="#B8A5C9" strokeOpacity=".8" />
-                <path d="M100 60 140 100 100 140 60 100Z" strokeOpacity=".6" />
-                <circle cx="100" cy="100" r="3" fill="#B8A5C9" stroke="none" />
-              </svg>
+            <div className={styles.pilarFoto}>
+              <FotoSlot src={fotos.remocao[1]?.src ?? null} alt="Remoção de tatuagem a laser em andamento" posicao="50% 30%" />
             </div>
             <div className={styles.pilarCorpo}>
               <span className={styles.quem}>Com a Naju</span>

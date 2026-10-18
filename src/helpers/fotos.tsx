@@ -17,7 +17,8 @@ export const fotos = {
   talesEspaco: foto("tales-espaco.jpg") as string | null,
   naju: foto("naju.jpg") as string | null,
   // Piercings aplicados pela Naju (7 fotos quadradas)
-  piercing: [foto("piercing-1.jpg"), foto("piercing-2.jpg"), foto("piercing-3.jpg"), foto("piercing-4.jpg"), foto("piercing-5.jpg"), foto("piercing-6.jpg"), foto("piercing-7.jpg")] as (string | null)[],
+  piercing: [foto("piercing-8.jpg"), foto("piercing-2.jpg"), foto("piercing-3.jpg"), foto("piercing-4.jpg"), foto("piercing-5.jpg"), foto("piercing-6.jpg"), foto("piercing-7.jpg")] as (string | null)[],
+  najuCartao: foto("piercing-1.jpg") as string | null, // foto da Naju no cartão "Piercing" da página inicial
   piercingNaju: foto("naju-piercing.jpg") as string | null, // retrato da Naju na página de piercing
   orelhaProjeto: foto("orelha-projeto.jpg") as string | null,
   orelha: foto("orelha.jpg") as string | null,
@@ -25,7 +26,7 @@ export const fotos = {
   // Foto de cada região de piercing (abre dentro da janela de cada botão).
   // Exemplo: umbigo: foto("umbigo.jpg"),
   regioes: {
-    orelha: foto("piercing-1.jpg"),
+    orelha: foto("piercing-8.jpg"),
     nariz: foto("piercing-6.jpg"),
     umbigo: foto("umbigo.jpg"),
     sobrancelha: foto("sobrancelha.jpg"),
@@ -78,9 +79,11 @@ export const fotos = {
     { src: foto("familia-6.jpg"), alt: "Família com o bebê após o furinho humanizado" },
   ] as { src: string; alt: string }[],
   // Resultados reais de remoção
-  // Exemplo: { src: foto("remocao-1.jpg"), alt: "Resultado de remoção de tatuagem" },
+  // Exemplo: { src: foto("remocao-1.jpg"), alt: "Resultado de remoção de pigmento de sobrancelha" },
   remocao: [
-    { src: foto("remocao-1.jpg"), alt: "Resultado de remoção de tatuagem" },
-    { src: foto("remocao-2.jpg"), alt: "Resultado de remoção de tatuagem" },
+    { src: foto("remocao-1.jpg"), alt: "Resultado de remoção de pigmento de sobrancelha" },
+    { src: foto("remocao-2.jpg"), alt: "Remoção de tatuagem a laser em andamento" },
+    { src: foto("remocao-3.jpg"), alt: "Resultado de remoção de pigmento de sobrancelha" },
+    { src: foto("remocao-4.jpg"), alt: "Resultado de remoção de pigmento de sobrancelha" },
   ] as { src: string; alt: string }[],
 };
