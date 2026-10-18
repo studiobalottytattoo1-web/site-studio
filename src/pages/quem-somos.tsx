@@ -48,10 +48,10 @@ export default function QuemSomosPage() {
 
         <div className={styles.perfil}>
           <div className={styles.perfilFoto}>
-            <FotoSlot src={fotos.tales} alt="Tales Rocha, tatuador" posicao="50% 15%" />
+            <FotoSlot src={fotos.tales} alt="Tales Balotty, tatuador" posicao="50% 15%" />
           </div>
           <div>
-            <h2 className={styles.titulo}>Tales Rocha</h2>
+            <h2 className={styles.titulo}>Tales Balotty</h2>
             <span className={styles.funcao}>Tatuador</span>
             <p className={styles.texto}>
               Tatuador profissional desde 2018, faz quase todos os estilos. Também faz cobertura de tatuagens antigas (cover

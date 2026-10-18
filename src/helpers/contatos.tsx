@@ -1,7 +1,7 @@
 // Contatos do estúdio. Mudar aqui muda o site inteiro.
 export const contatos = {
   tatuagem: {
-    nome: "Tales Rocha",
+    nome: "Tales Balotty",
     numero: "5533999476761",
     numeroExibicao: "(33) 99947-6761",
     instagram: "talesbalottytattoo",

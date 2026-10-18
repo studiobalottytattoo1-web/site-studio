@@ -4,7 +4,7 @@ import { Botao } from "../components/Botao";
 import { Bloco } from "../components/Bloco";
 import { HeroInterno } from "../components/HeroInterno";
 import { FotoSlot } from "../components/FotoSlot";
-import { GradeFotos } from "../components/GradeFotos";
+import { GaleriaPaginada } from "../components/GaleriaPaginada";
 import { FaixaCTA } from "../components/FaixaCTA";
 import { EstilosTatuagem } from "../components/EstilosTatuagem";
 import { fotos } from "../helpers/fotos";
@@ -18,7 +18,7 @@ const etapas = [
 ];
 
 export default function TatuagemPage() {
-  const trabalhos = fotos.tatuagens.slice(0, 6).map((t) => ({ src: t.src as string | null, alt: t.alt }));
+  const trabalhos = fotos.tatuagens.map((t) => ({ src: t.src as string | null, alt: t.alt, cobertura: t.cobertura }));
   return (
     <div>
       <Helmet>
@@ -42,7 +42,7 @@ export default function TatuagemPage() {
       </Bloco>
 
       <Bloco id="trabalhos" tom="escuro" titulo="Trabalhos do Tales" intro="Alguns trabalhos feitos no estúdio.">
-        <GradeFotos itens={trabalhos} minimo={6} proporcao="377 / 450" colunas={3} tom="escuro" />
+        <GaleriaPaginada itens={trabalhos} porPagina={6} rotulo="Trabalhos do Tales" />
       </Bloco>
 
       <Bloco id="cobertura" titulo="Cobertura (cover up) de tatuagem" intro="Transformamos uma tatuagem antiga em um desenho novo.">

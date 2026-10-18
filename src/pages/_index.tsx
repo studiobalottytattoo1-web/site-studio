@@ -147,7 +147,7 @@ export default function InicioPage() {
             <h2 className={styles.casalTitulo}>Dois profissionais, um só estúdio.</h2>
             <div className={styles.pessoas}>
               <div>
-                <h3 className={styles.pessoaNome}>Tales Rocha</h3>
+                <h3 className={styles.pessoaNome}>Tales Balotty</h3>
                 <span className={styles.funcao}>Tatuador</span>
                 <p className={styles.pessoaTexto}>
                   Tatuador profissional desde 2018, faz quase todos os estilos. Formado em remoção de pigmentos.
