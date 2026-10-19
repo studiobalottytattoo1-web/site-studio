@@ -5,7 +5,7 @@ import { HeroInterno } from "../components/HeroInterno";
 import { FotoSlot } from "../components/FotoSlot";
 import { BiosegurancaSecao } from "../components/BiosegurancaSecao";
 import { FaixaCTA } from "../components/FaixaCTA";
-import { fotos } from "../helpers/fotos";
+import { fotos, topos } from "../helpers/fotos";
 import { contatos } from "../helpers/contatos";
 import { whatsappLink } from "../helpers/whatsappLink";
 import styles from "./quem-somos.module.css";
@@ -22,6 +22,8 @@ export default function QuemSomosPage() {
       </Helmet>
 
       <HeroInterno
+        fotoComputador={topos.quemSomos.computador}
+        fotoCelular={topos.quemSomos.celular}
         titulo="Um estúdio feito por duas pessoas que levam o ofício a sério."
         texto="O Studio Balotty nasceu em 2018, em São João Evangelista, e hoje atende em Guanhães. Aqui cada pessoa tem hora marcada e tempo para conversar."
       >
@@ -100,8 +102,12 @@ export default function QuemSomosPage() {
 
       <Bloco id="nosso-espaco" tom="escuro" titulo="Nosso espaço">
         <div className={styles.espaco}>
-          <div className={styles.espacoFoto}>
-            <FotoSlot src={fotos.talesEspaco} alt="Espaço de atendimento do estúdio" posicao="50% 30%" />
+          <div className={styles.espacoGrade}>
+            {fotos.espaco.map((f) => (
+              <div key={f.src} className={styles.espacoFoto}>
+                <FotoSlot src={f.src} alt={f.alt} posicao={f.posicao} />
+              </div>
+            ))}
           </div>
           <div>
             <p className={styles.espacoTexto}>

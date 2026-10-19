@@ -66,6 +66,18 @@
 .acoes {
   margin-top: 1.5rem;
 }
+.miniaturas {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+.miniatura {
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--marrom);
+}
 .camuflagem {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
@@ -114,6 +126,10 @@
   }
 }
 @media (max-width: 560px) {
+  .miniaturas {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.7rem;
+  }
   .etapas {
     grid-template-columns: 1fr;
   }

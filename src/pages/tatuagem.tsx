@@ -7,7 +7,7 @@ import { FotoSlot } from "../components/FotoSlot";
 import { GaleriaPaginada } from "../components/GaleriaPaginada";
 import { FaixaCTA } from "../components/FaixaCTA";
 import { EstilosTatuagem } from "../components/EstilosTatuagem";
-import { fotos } from "../helpers/fotos";
+import { fotos, topos } from "../helpers/fotos";
 import styles from "./tatuagem.module.css";
 
 const etapas = [
@@ -30,6 +30,8 @@ export default function TatuagemPage() {
       </Helmet>
 
       <HeroInterno
+        fotoComputador={topos.tatuagem.computador}
+        fotoCelular={topos.tatuagem.celular}
         titulo="Tatuagem feita com projeto e conversa."
         texto="O Tales tatua desde 2018 e trabalha quase todos os estilos. Você conta a ideia, ele desenha e ajusta com você."
       >
@@ -75,6 +77,13 @@ export default function TatuagemPage() {
       </Bloco>
 
       <Bloco id="camuflagem" tom="branco" titulo="Camuflagem e cobertura de cicatrizes" intro="Tatuagem para suavizar a aparência de cicatrizes e marcas.">
+        <div className={styles.miniaturas}>
+          {fotos.camuflagem.map((f) => (
+            <div key={f.src} className={styles.miniatura}>
+              <FotoSlot src={f.src} alt={f.alt} />
+            </div>
+          ))}
+        </div>
         <div className={styles.camuflagem}>
           <div>
             <p className={styles.texto}>

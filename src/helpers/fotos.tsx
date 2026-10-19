@@ -7,6 +7,15 @@
 // ============================================================================
 const foto = (arquivo: string) => `${import.meta.env.BASE_URL}fotos/${arquivo}`;
 
+// Fotos de fundo do cabeçalho das páginas (computador = horizontal, celular = vertical).
+// Basta colocar os arquivos em public/fotos com estes nomes. Sem o arquivo, o cabeçalho fica liso.
+export const topos = {
+  quemSomos: { computador: foto("quem-somos-topo.jpg"), celular: foto("quem-somos-topo-celular.jpg") },
+  tatuagem: { computador: foto("tatuagem-topo.jpg"), celular: foto("tatuagem-topo-celular.jpg") },
+  piercing: { computador: foto("piercing-topo.jpg"), celular: foto("piercing-topo-celular.jpg") },
+  contato: { computador: foto("contato-topo.jpg"), celular: foto("contato-topo-celular.jpg") },
+};
+
 export const fotos = {
   logo: foto("logo.png") as string | null,
   casalEspaco: foto("casal-espaco.jpg") as string | null, // hero no computador (horizontal)
@@ -66,6 +75,20 @@ export const fotos = {
     { src: foto("tatuagem-23.jpg"), alt: "Tatuagem feita pelo Tales" },
     { src: foto("tatuagem-24.jpg"), alt: "Tatuagem feita pelo Tales" },
   ] as { src: string; alt: string; cobertura?: boolean }[],
+  // Fotos do espaço do estúdio (página Quem somos, 2 em cima e 2 embaixo)
+  espaco: [
+    { src: foto("espaco-1.jpg"), alt: "Mesa de café e frase na parede do estúdio", posicao: "12% 50%" },
+    { src: foto("espaco-2.jpg"), alt: "Naju na sala de piercing do estúdio", posicao: "60% 50%" },
+    { src: foto("espaco-3.jpg"), alt: "Tales na sala de tatuagem do estúdio", posicao: "62% 50%" },
+    { src: foto("espaco-4.jpg"), alt: "Sala do estúdio com prateleiras e quadro", posicao: "35% 50%" },
+  ] as { src: string; alt: string; posicao?: string }[],
+  // Camuflagem de cicatrizes (miniaturas na página Tatuagem)
+  camuflagem: [
+    { src: foto("camuflagem-1.jpg"), alt: "Cicatriz no antebraço antes da camuflagem" },
+    { src: foto("camuflagem-2.jpg"), alt: "Antebraço com cicatriz camuflada por tatuagem de flores" },
+    { src: foto("camuflagem-3.jpg"), alt: "Cobertura de cicatriz no ombro com tatuagem colorida" },
+    { src: foto("camuflagem-4.jpg"), alt: "Cicatriz no ombro camuflada por tatuagem de flores" },
+  ] as { src: string; alt: string }[],
   // Furinho humanizado
   furinhoHero: foto("furinho-hero.jpg") as string | null,
   furinhoDetalhe: [foto("furinho-detalhe-1.jpg"), foto("furinho-detalhe-2.jpg")] as (string | null)[],

@@ -51,6 +51,48 @@
   gap: 0.8rem;
   margin-top: 2rem;
 }
+.comFoto {
+  isolation: isolate;
+  min-height: 24rem;
+  display: flex;
+  align-items: flex-end;
+}
+.comFoto::before,
+.comFoto::after {
+  display: none;
+}
+.comFoto .dentro {
+  width: 100%;
+}
+.fundoFoto,
+.foto {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+}
+.foto {
+  object-fit: cover;
+  object-position: 50% 25%;
+}
+.veu {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(to top, rgba(36, 35, 33, 0.92) 0%, rgba(36, 35, 33, 0.6) 40%, rgba(36, 35, 33, 0.15) 75%, rgba(36, 35, 33, 0.4) 100%);
+}
+@media (min-width: 900px) {
+  .comFoto {
+    min-height: 30rem;
+  }
+  .veu {
+    background:
+      linear-gradient(to right, rgba(36, 35, 33, 0.9) 0%, rgba(36, 35, 33, 0.65) 35%, rgba(36, 35, 33, 0.05) 70%),
+      linear-gradient(to top, rgba(36, 35, 33, 0.6) 0%, transparent 40%);
+  }
+}
 @media (max-width: 640px) {
   .hero {
     padding: 7rem 1.25rem 3rem;

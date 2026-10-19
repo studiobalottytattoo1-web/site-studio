@@ -4,6 +4,7 @@ import { AvaliacoesGoogle } from "../components/AvaliacoesGoogle";
 import { Botao } from "../components/Botao";
 import { HeroInterno } from "../components/HeroInterno";
 import { ContatoCartoes } from "../components/ContatoCartoes";
+import { topos } from "../helpers/fotos";
 import { contatos } from "../helpers/contatos";
 import styles from "./contato.module.css";
 
@@ -24,6 +25,8 @@ export default function ContatoPage() {
       </Helmet>
 
       <HeroInterno
+        fotoComputador={topos.contato.computador}
+        fotoCelular={topos.contato.celular}
         titulo="Fale com a gente."
         texto="Atendemos de segunda a sábado, com horário agendado. Escolha com quem quer falar."
       >

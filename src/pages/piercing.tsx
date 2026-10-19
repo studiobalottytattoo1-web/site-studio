@@ -7,7 +7,7 @@ import { Rombos } from "../components/Rombos";
 import { BiosegurancaSecao } from "../components/BiosegurancaSecao";
 import { FaixaCTA } from "../components/FaixaCTA";
 import { PiercingRegioes } from "../components/PiercingRegioes";
-import { fotos } from "../helpers/fotos";
+import { fotos, topos } from "../helpers/fotos";
 import styles from "./piercing.module.css";
 
 export default function PiercingPage() {
@@ -33,6 +33,8 @@ export default function PiercingPage() {
       </Helmet>
 
       <HeroInterno
+        fotoComputador={topos.piercing.computador}
+        fotoCelular={topos.piercing.celular}
         titulo="Piercing com joia certa e anatomia avaliada."
         texto="A Naju aplica piercing com joias premium e avalia a sua anatomia antes de furar. Cada projeto de orelha é pensado para você."
       >
