@@ -21,6 +21,7 @@ export default function RemocaoPage() {
       </Helmet>
 
       <HeroInterno
+        comLogo
         titulo="Remoção de tatuagem e despigmentação, com avaliação individual."
         texto="A Naju e o Tales são formados em remoção de pigmentos. Os atendimentos são com a Naju, em sessões planejadas para cada caso."
       >

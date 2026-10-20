@@ -38,6 +38,7 @@ export default function CuidadosFaqPage() {
       </Helmet>
 
       <HeroInterno
+        comLogo
         titulo="Cuidados e perguntas frequentes."
         texto="O que fazer depois do atendimento e as respostas para as dúvidas que mais aparecem."
       />

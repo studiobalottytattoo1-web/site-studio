@@ -31,6 +31,7 @@ export default function FurinhoHumanizadoPage() {
       </Helmet>
 
       <HeroInterno
+        comLogo
         titulo="O primeiro brinco do seu bebê, com calma e cuidado."
         texto="O furinho humanizado é um dos atendimentos mais especiais da Naju. A família participa de cada passo."
       >

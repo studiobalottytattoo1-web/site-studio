@@ -9,14 +9,16 @@ interface HeroInternoProps {
   fotoComputador?: string; // horizontal
   fotoCelular?: string; // vertical
   alt?: string;
+  // Logo do estúdio à direita, sobre fundo marrom (usada nas páginas sem foto de fundo).
+  comLogo?: boolean;
 }
 
 // Abertura das páginas internas: losangos finos ao fundo, ou uma foto de fundo quando ela existe.
-export function HeroInterno({ titulo, texto, children, fotoComputador, fotoCelular, alt = "" }: HeroInternoProps) {
+export function HeroInterno({ titulo, texto, children, fotoComputador, fotoCelular, alt = "", comLogo = false }: HeroInternoProps) {
   const [falhou, setFalhou] = useState(false);
   const temFoto = Boolean(fotoComputador || fotoCelular) && !falhou;
   return (
-    <section className={`${styles.hero} ${temFoto ? styles.comFoto : ""}`}>
+    <section className={`${styles.hero} ${temFoto ? styles.comFoto : ""} ${comLogo && !temFoto ? styles.comLogo : ""}`}>
       {temFoto && (
         <>
           <picture className={styles.fundoFoto}>
@@ -36,6 +38,15 @@ export function HeroInterno({ titulo, texto, children, fotoComputador, fotoCelul
         <p className={styles.texto}>{texto}</p>
         {children && <div className={styles.acoes}>{children}</div>}
       </div>
+      {comLogo && !temFoto && (
+        <img
+          className={styles.logo}
+          src={`${import.meta.env.BASE_URL}fotos/logo-estudio.png`}
+          alt="Logo Studio Balotty e Naju Piercer"
+          width={380}
+          height={372}
+        />
+      )}
     </section>
   );
 }

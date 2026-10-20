@@ -98,3 +98,45 @@
     padding: 7rem 1.25rem 3rem;
   }
 }
+
+/* Cabeçalho com a logo do estúdio à direita */
+.comLogo {
+  background:
+    radial-gradient(ellipse 45% 90% at 78% 50%, rgba(167, 121, 81, 0.38), transparent 70%),
+    linear-gradient(115deg, #50392f 0%, #3a2a24 48%, #2b2420 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.comLogo::before,
+.comLogo::after {
+  display: none;
+}
+.logo {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: min(210px, 52vw);
+  height: auto;
+  align-self: flex-end;
+  margin-right: 0.5rem;
+  filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.35));
+}
+@media (min-width: 900px) {
+  .comLogo {
+    display: block;
+    min-height: 26rem;
+    padding-bottom: 5rem;
+  }
+  .comLogo .dentro {
+    padding-right: 26rem;
+  }
+  .logo {
+    position: absolute;
+    right: max(2rem, calc((100% - 1180px) / 2 + 1rem));
+    top: 50%;
+    width: 340px;
+    margin: 0;
+    transform: translateY(-46%);
+  }
+}
