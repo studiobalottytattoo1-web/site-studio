@@ -11,10 +11,12 @@ interface HeroInternoProps {
   alt?: string;
   // Logo do estúdio à direita, sobre fundo marrom (usada nas páginas sem foto de fundo).
   comLogo?: boolean;
+  // Escurece a foto (0 a 1) quando ela é muito clara, para o texto branco continuar legível.
+  escurecer?: number;
 }
 
 // Abertura das páginas internas: losangos finos ao fundo, ou uma foto de fundo quando ela existe.
-export function HeroInterno({ titulo, texto, children, fotoComputador, fotoCelular, alt = "", comLogo = false }: HeroInternoProps) {
+export function HeroInterno({ titulo, texto, children, fotoComputador, fotoCelular, alt = "", comLogo = false, escurecer = 0 }: HeroInternoProps) {
   const [falhou, setFalhou] = useState(false);
   const temFoto = Boolean(fotoComputador || fotoCelular) && !falhou;
   return (
@@ -30,7 +32,7 @@ export function HeroInterno({ titulo, texto, children, fotoComputador, fotoCelul
               onError={() => setFalhou(true)}
             />
           </picture>
-          <div className={styles.veu} />
+          <div className={styles.veu} style={escurecer ? { backgroundColor: `rgba(36, 35, 33, ${escurecer})` } : undefined} />
         </>
       )}
       <div className={styles.dentro}>

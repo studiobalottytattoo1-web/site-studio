@@ -5,7 +5,7 @@ import { HeroInterno } from "../components/HeroInterno";
 import { GradeFotos } from "../components/GradeFotos";
 import { BiosegurancaSecao } from "../components/BiosegurancaSecao";
 import { FaixaCTA } from "../components/FaixaCTA";
-import { fotos } from "../helpers/fotos";
+import { fotos, topos } from "../helpers/fotos";
 import styles from "./remocao-e-despigmentacao.module.css";
 
 export default function RemocaoPage() {
@@ -21,7 +21,9 @@ export default function RemocaoPage() {
       </Helmet>
 
       <HeroInterno
-        comLogo
+        fotoComputador={topos.laser.computador}
+        fotoCelular={topos.laser.celular}
+        escurecer={0.3}
         titulo="Remoção de tatuagem e despigmentação, com avaliação individual."
         texto="A Naju e o Tales são formados em remoção de pigmentos. Os atendimentos são com a Naju, em sessões planejadas para cada caso."
       >

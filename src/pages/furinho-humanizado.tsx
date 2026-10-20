@@ -6,7 +6,7 @@ import { FotoSlot } from "../components/FotoSlot";
 import { GradeFotos } from "../components/GradeFotos";
 import { BiosegurancaSecao } from "../components/BiosegurancaSecao";
 import { FaixaCTA } from "../components/FaixaCTA";
-import { fotos } from "../helpers/fotos";
+import { fotos, topos } from "../helpers/fotos";
 import { contatos } from "../helpers/contatos";
 import { whatsappLink } from "../helpers/whatsappLink";
 import styles from "./furinho-humanizado.module.css";
@@ -31,7 +31,9 @@ export default function FurinhoHumanizadoPage() {
       </Helmet>
 
       <HeroInterno
-        comLogo
+        fotoComputador={topos.furinho.computador}
+        fotoCelular={topos.furinho.celular}
+        escurecer={0.2}
         titulo="O primeiro brinco do seu bebê, com calma e cuidado."
         texto="O furinho humanizado é um dos atendimentos mais especiais da Naju. A família participa de cada passo."
       >

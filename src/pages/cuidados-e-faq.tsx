@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { Bloco } from "../components/Bloco";
 import { HeroInterno } from "../components/HeroInterno";
+import { topos } from "../helpers/fotos";
 import { FaixaCTA } from "../components/FaixaCTA";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../components/Accordion";
 import styles from "./cuidados-e-faq.module.css";
@@ -38,7 +39,9 @@ export default function CuidadosFaqPage() {
       </Helmet>
 
       <HeroInterno
-        comLogo
+        fotoComputador={topos.cuidados.computador}
+        fotoCelular={topos.cuidados.celular}
+        escurecer={0.5}
         titulo="Cuidados e perguntas frequentes."
         texto="O que fazer depois do atendimento e as respostas para as dúvidas que mais aparecem."
       />

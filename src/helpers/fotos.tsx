@@ -14,6 +14,9 @@ export const topos = {
   tatuagem: { computador: foto("tatuagem-topo.jpg"), celular: foto("tatuagem-topo-celular.jpg") },
   piercing: { computador: foto("piercing-topo.jpg"), celular: foto("piercing-topo-celular.jpg") },
   contato: { computador: foto("contato-topo.jpg"), celular: foto("contato-topo-celular.jpg") },
+  furinho: { computador: foto("furinho-topo.jpg"), celular: foto("furinho-topo-celular.jpg") },
+  laser: { computador: foto("laser-topo.jpg"), celular: foto("laser-topo-celular.jpg") },
+  cuidados: { computador: foto("cuidados-topo.jpg"), celular: foto("cuidados-topo-celular.jpg") },
 };
 
 export const fotos = {
