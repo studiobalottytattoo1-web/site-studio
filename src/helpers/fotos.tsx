@@ -55,6 +55,7 @@ export const fotos = {
     { src: foto("cobertura-1.jpg"), alt: "Cobertura de tatuagem antiga", cobertura: true },
     { src: foto("cobertura-2.jpg"), alt: "Cobertura de tatuagem antiga", cobertura: true },
     { src: foto("tatuagem-1.jpg"), alt: "Tatuagem feita pelo Tales" },
+    { src: foto("tatuagem-25.jpg"), alt: "Tatuagem de lobo com borboletas e flores na panturrilha" },
     { src: foto("tatuagem-2.jpg"), alt: "Tatuagem feita pelo Tales" },
     { src: foto("tatuagem-3.jpg"), alt: "Tatuagem feita pelo Tales" },
     { src: foto("tatuagem-4.jpg"), alt: "Tatuagem feita pelo Tales" },

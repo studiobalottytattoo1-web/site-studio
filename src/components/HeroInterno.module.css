@@ -34,7 +34,7 @@
   margin: 0 auto;
 }
 .titulo {
-  font: 400 clamp(2.4rem, 6vw, 4.2rem) / 1.06 var(--font-family-display);
+  font: 400 clamp(2.1rem, 6vw, 4.2rem) / 1.06 var(--font-family-display);
   max-width: 16ch;
   text-wrap: balance;
 }
@@ -106,7 +106,8 @@
     linear-gradient(115deg, #50392f 0%, #3a2a24 48%, #2b2420 100%);
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.1rem;
+  padding-top: 6.4rem;
 }
 .comLogo::before,
 .comLogo::after {
@@ -116,10 +117,11 @@
   position: relative;
   z-index: 1;
   display: block;
-  width: min(210px, 52vw);
+  order: -1;
+  width: 104px;
   height: auto;
   align-self: flex-end;
-  margin-right: 0.5rem;
+  margin: 0.4rem 0.25rem -0.2rem 0;
   filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.35));
 }
 @media (min-width: 900px) {
@@ -139,4 +141,12 @@
     margin: 0;
     transform: translateY(-46%);
   }
+}
+
+/* Sombra bem leve atrás das letras sobre foto: quase imperceptível, só para dar nitidez */
+.comFoto .titulo {
+  text-shadow: 0 1px 2px rgba(20, 16, 14, 0.45), 0 2px 18px rgba(20, 16, 14, 0.35);
+}
+.comFoto .texto {
+  text-shadow: 0 1px 2px rgba(20, 16, 14, 0.5), 0 1px 12px rgba(20, 16, 14, 0.35);
 }
