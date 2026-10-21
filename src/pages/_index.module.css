@@ -117,7 +117,7 @@
     width: min(500px, 42%);
   }
   .fotoHero {
-    object-position: 70% 28%;
+    object-position: 70% 6%;
   }
 }
 @media (prefers-reduced-motion: reduce) {
