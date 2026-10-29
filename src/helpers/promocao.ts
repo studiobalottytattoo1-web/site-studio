@@ -6,7 +6,8 @@ export const promocao = {
   ativa: true,
   percentual: 5,
   texto: "Vale para quem pedir orçamento pelo site, com o Tales.",
-  fim: "2026-10-31T15:40:00-03:00" as string | null, // 48 horas a partir de 29/10/2026, 15h40
+  validade: "Válido até 1º de novembro.", // mantenha igual ao "fim" abaixo
+  fim: "2026-11-01T23:59:00-03:00" as string | null, // fim do dia 1º de novembro, horário de Brasília
 };
 
 export function promocaoVigente(): boolean {

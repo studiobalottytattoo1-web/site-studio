@@ -94,7 +94,7 @@ export default function PedirOrcamentoPage() {
         <div className={styles.card}>
           {promoAtiva && (
             <p className={styles.promo}>
-              <b>{promocao.percentual}% de desconto na tatuagem</b>. {promocao.texto}
+              <b>{promocao.percentual}% de desconto na tatuagem</b>. {promocao.texto} {promocao.validade}
             </p>
           )}
           <fieldset className={styles.passo}>

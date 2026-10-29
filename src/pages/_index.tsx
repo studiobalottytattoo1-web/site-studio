@@ -24,6 +24,8 @@ export default function InicioPage() {
         />
       </Helmet>
 
+      <FaixaPromocao />
+
       <section className={styles.hero}>
         <div className={styles.fundo}>
           {fotos.casalEspaco || fotos.casalRetrato ? (
@@ -55,8 +57,6 @@ export default function InicioPage() {
           </div>
         </div>
       </section>
-
-      <FaixaPromocao />
 
       <Bloco
         id="servicos"
