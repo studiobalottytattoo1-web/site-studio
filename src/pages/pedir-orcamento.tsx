@@ -5,6 +5,7 @@ import { Botao } from "../components/Botao";
 import { HeroInterno } from "../components/HeroInterno";
 import { servicos, type ServicoId, type Destino } from "../helpers/servicos";
 import { contatos } from "../helpers/contatos";
+import { promocao, promocaoVigente } from "../helpers/promocao";
 import { whatsappLink } from "../helpers/whatsappLink";
 import styles from "./pedir-orcamento.module.css";
 
@@ -37,6 +38,8 @@ export default function PedirOrcamentoPage() {
   const [falarCom, setFalarCom] = useState<FalarCom>("auto");
   const [descricao, setDescricao] = useState(estiloInicial ? `Tenho interesse em: ${estiloInicial}. ` : "");
 
+  const promoAtiva = promocaoVigente();
+
   const alternar = (id: ServicoId) =>
     setSelecionados((atual) => (atual.includes(id) ? atual.filter((x) => x !== id) : [...atual, id]));
 
@@ -60,6 +63,9 @@ export default function PedirOrcamentoPage() {
     const mensagem = [
       `Olá, ${contato.nome.split(" ")[0]}! Vim pelo site do Studio Balotty.`,
       `Tenho interesse em: ${lista.map((s) => s.nome).join(", ")}.`,
+      promoAtiva && destino === "tatuagem"
+        ? `Quero o desconto de ${promocao.percentual}% da promoção de tatuagem.`
+        : "",
       descricao.trim() ? `Sobre a ideia: ${descricao.trim()}` : "",
     ]
       .filter(Boolean)
@@ -86,6 +92,11 @@ export default function PedirOrcamentoPage() {
 
       <div className={styles.fundo}>
         <div className={styles.card}>
+          {promoAtiva && (
+            <p className={styles.promo}>
+              <b>{promocao.percentual}% de desconto na tatuagem</b>. {promocao.texto}
+            </p>
+          )}
           <fieldset className={styles.passo}>
             <legend className={styles.passoTitulo}>O que você procura?</legend>
             <p className={styles.ajuda}>Pode marcar mais de um.</p>

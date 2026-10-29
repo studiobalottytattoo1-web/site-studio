@@ -8,6 +8,7 @@ import { CarrosselTrabalhos } from "../components/CarrosselTrabalhos";
 import { BiosegurancaSecao } from "../components/BiosegurancaSecao";
 import { AvaliacoesGoogle } from "../components/AvaliacoesGoogle";
 import { ContatoCartoes } from "../components/ContatoCartoes";
+import { FaixaPromocao } from "../components/FaixaPromocao";
 import { fotos } from "../helpers/fotos";
 import { contatos } from "../helpers/contatos";
 import styles from "./_index.module.css";
@@ -54,6 +55,8 @@ export default function InicioPage() {
           </div>
         </div>
       </section>
+
+      <FaixaPromocao />
 
       <Bloco
         id="servicos"
