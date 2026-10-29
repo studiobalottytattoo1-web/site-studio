@@ -1,0 +1,53 @@
+.faixa {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: #2c2422;
+  background-size: cover;
+  background-position: 50% 40%;
+  color: #fffefa;
+  padding: 4.5rem 1.5rem;
+}
+.veu {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse at 80% 20%, rgba(184, 165, 201, 0.25), transparent 55%),
+    linear-gradient(90deg, rgba(36, 35, 33, 0.94) 0%, rgba(36, 35, 33, 0.8) 60%, rgba(36, 35, 33, 0.55) 100%);
+}
+.dentro {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.selo {
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--lilas);
+}
+.titulo {
+  font: 400 clamp(2rem, 4.6vw, 3.2rem) / 1.1 var(--font-family-display);
+  max-width: 20ch;
+  text-wrap: balance;
+}
+.texto {
+  max-width: 52ch;
+  font-weight: 300;
+  color: rgba(255, 254, 250, 0.92);
+}
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 0.4rem;
+}
+@media (max-width: 640px) {
+  .faixa {
+    padding: 3.2rem 1.2rem;
+  }
+}

@@ -23,6 +23,7 @@ export const fotos = {
   logo: foto("logo.png") as string | null,
   casalEspaco: foto("casal-espaco.jpg") as string | null, // hero no computador (horizontal)
   casalRetrato: foto("casal-retrato.jpg") as string | null, // hero no celular (vertical)
+  promocaoFundo: foto("promocao.jpg") as string | null, // foto de fundo da faixa de promoção na página inicial
   casal2: foto("casal-2.jpg") as string | null,
   casal3: foto("casal-3.jpg") as string | null,
   tales: foto("tales.jpg") as string | null,
