@@ -21,6 +21,7 @@ export function FaixaPromocao() {
           {promocao.percentual}% de desconto na tatuagem
         </h2>
         <p className={styles.texto}>{promocao.texto}</p>
+        <p className={styles.validade}>{promocao.validade}</p>
         <div className={styles.acoes}>
           <Botao to="/pedir-orcamento?servico=tatuagem" variant="claro">
             Pedir orçamento com desconto

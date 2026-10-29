@@ -40,6 +40,13 @@
   font-weight: 300;
   color: rgba(255, 254, 250, 0.92);
 }
+.validade {
+  margin-top: -0.6rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--lilas);
+}
 .acoes {
   display: flex;
   flex-wrap: wrap;
