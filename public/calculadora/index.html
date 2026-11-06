@@ -203,14 +203,31 @@
           <div class="hint">Entre 2% e 5% para serviços. Use 0 para produto.</div>
         </div>
         <div>
-          <label for="taxaCartao">Taxa da maquininha (%)</label>
-          <input id="taxaCartao" type="number" inputmode="decimal" value="3" min="0" step="0.1">
-          <div class="hint">Quando o cliente paga no cartão.</div>
+          <label for="maquininhaServico">Qual maquininha você usa?</label>
+          <select id="maquininhaServico">
+            <option value="3.24" selected>Média das principais maquininhas (3,24%)</option>
+            <option value="2.69">Stone (2,69%)</option>
+            <option value="3.08">Ton (3,08%)</option>
+            <option value="3.93">Mercado Pago (3,93%)</option>
+            <option value="3.64">Cielo (3,64%)</option>
+            <option value="3.24">PagBank / PagSeguro (3,24%)</option>
+            <option value="3.14">SumUp (3,14%)</option>
+            <option value="2.79">Rede (2,79%)</option>
+            <option value="3.15">InfinitePay (3,15%)</option>
+            <option value="3.49">Getnet (3,49%)</option>
+            <option value="custom">Outra / não sei (digitar abaixo)</option>
+          </select>
+          <div class="hint">Taxa de crédito à vista, de sites de comparação (2026). Confira na sua maquininha.</div>
+          <div id="blocoTaxaCustomServ" class="hidden">
+            <label for="taxaCartao">Qual a taxa de crédito à vista da sua maquininha? (%)</label>
+            <input id="taxaCartao" type="number" inputmode="decimal" value="3.24" min="0" step="0.01">
+            <div class="hint">Procure no contrato ou no site da sua maquininha.</div>
+          </div>
         </div>
       </div>
-      <label for="margem">Sua margem de lucro (%)</label>
-      <input id="margem" type="number" inputmode="decimal" value="10" min="0" max="80">
-      <div class="hint">Reserva para imprevistos, crescer e lucro extra.</div>
+      <label for="margem">Quanto você quer ganhar de lucro neste serviço? (R$)</label>
+      <input id="margem" type="number" inputmode="decimal" value="100" min="0" step="1">
+      <div class="hint">Escreva o valor em reais que sobra para você em cada atendimento, depois de pagar tudo. Ex.: se quer ganhar R$ 100 a mais, escreva 100.</div>
     </section>
 
     <button class="acao" id="calcularServico" type="button">Ver quanto eu devo cobrar</button>
@@ -687,8 +704,8 @@ function parametros() {
     margem: num("margem")
   };
 }
-// Parte do preço que sobra depois de impostos, taxas e margem
-function divisor(p) { return Math.max(1 - (p.imposto + p.iss + p.cartao + p.margem) / 100, 0.05); }
+// Parte do preço que sobra depois de impostos e taxas (o lucro em R$ é somado ao custo)
+function divisor(p) { return Math.max(1 - (p.imposto + p.iss + p.cartao) / 100, 0.05); }
 
 // ============================================================
 // CÁLCULO: SERVIÇO
@@ -704,9 +721,11 @@ function calcularServico() {
   const dv = divisor(p);
 
   const custoHora = (p.custosFixos + p.proLabore) / p.horasMes;   // quanto custa cada hora sua
-  const horaCobrar = custoHora / dv;                               // quanto cobrar por hora, já com impostos e margem
+  const lucroDesejado = p.margem;                                  // lucro em R$ neste serviço
+  const lucroPorHora = horas > 0 ? lucroDesejado / horas : 0;
+  const horaCobrar = (custoHora + lucroPorHora) / dv;              // quanto cobrar por hora, já com impostos, taxas e lucro
   const custoServico = materiais + horas * custoHora;
-  const preco = custoServico / dv;
+  const preco = (custoServico + lucroDesejado) / dv;
   const faixaMin = preco * 0.9, faixaMax = preco * 1.1;
 
   const faturamentoMes = (p.custosFixos + p.proLabore) / dv;      // quanto precisa entrar no mês
@@ -714,14 +733,14 @@ function calcularServico() {
   const atendSem = atendMes / SEMANAS_MES;
 
   const impV = preco * p.imposto / 100, issV = preco * p.iss / 100;
-  const cartV = preco * p.cartao / 100, margV = preco * p.margem / 100;
+  const cartV = preco * p.cartao / 100, margV = lucroDesejado;
   const sobra = preco - impV - issV - cartV;
 
   $("resultadoServico").innerHTML = `
     <div class="res-topo">
       <div class="pre">Para <b>${profSel[0]}</b>, você deve cobrar, no mínimo, por hora:</div>
       <div class="hora">${brl(horaCobrar)} <small>por hora</small></div>
-      <p class="explica">Esse valor já inclui impostos, taxas e sua margem. Cada hora que você trabalha precisa render pelo menos isso para você cumprir seus objetivos.</p>
+      <p class="explica">Esse valor já inclui impostos, taxas e o seu lucro. Cada hora que você trabalha precisa render pelo menos isso para você cumprir seus objetivos.</p>
     </div>
 
     <div class="grid3">
@@ -745,10 +764,10 @@ function calcularServico() {
         <tr><td>Impostos (${fmt(p.imposto)}%)<small>vai para o governo, calculado sobre o preço final</small></td><td class="v">${brl(impV)}</td></tr>
         <tr><td>ISS da prefeitura (${fmt(p.iss)}%)<small>imposto municipal sobre serviços</small></td><td class="v">${brl(issV)}</td></tr>
         <tr><td>Taxa da maquininha (${fmt(p.cartao)}%)<small>cobrada quando o cliente paga no cartão</small></td><td class="v">${brl(cartV)}</td></tr>
-        <tr><td>Sua margem (${fmt(p.margem)}%)<small>lucro e reserva para imprevistos</small></td><td class="v">${brl(margV)}</td></tr>
+        <tr><td>Seu lucro neste serviço<small>o valor em reais que você quer ganhar</small></td><td class="v">${brl(margV)}</td></tr>
         <tr class="total"><td>Preço final ao cliente</td><td class="v">${brl(preco)}</td></tr>
       </table>
-      <div class="frase">Depois de impostos e taxas, sobram <b>${brl(sobra)}</b> deste atendimento para pagar seu custo de trabalho e sua margem.</div>
+      <div class="frase">Depois de impostos e taxas, sobram <b>${brl(sobra)}</b> deste atendimento para pagar seu custo de trabalho e o seu lucro.</div>
     </div>
 
     <div class="bloco">
@@ -840,6 +859,13 @@ $("variacao").addEventListener("change", () => $("resultadoServico").classList.a
 $("diasSemana").addEventListener("change", atualizarHoras);
 $("horasDia").addEventListener("input", atualizarHoras);
 $("calcularServico").addEventListener("click", calcularServico);
+$("maquininhaServico").addEventListener("change", () => {
+  const v = $("maquininhaServico").value;
+  const outra = v === "custom";
+  $("blocoTaxaCustomServ").classList.toggle("hidden", !outra);
+  if (!outra) $("taxaCartao").value = v;
+  else $("taxaCartao").value = "";
+});
 $("maquininhaProduto").addEventListener("change", () => {
   const v = $("maquininhaProduto").value;
   const outra = v === "custom";
