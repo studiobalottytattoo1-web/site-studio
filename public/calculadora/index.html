@@ -218,32 +218,94 @@
 
   <!-- ===================== ENTRADA: PRODUTO ===================== -->
   <div id="blocoProduto" class="hidden">
+
     <section class="card">
       <div class="step">Passo 1</div>
-      <h2>Seu produto</h2>
+      <h2>Qual é o produto?</h2>
+      <p class="sub">Esta aba é só para produtos. Os dados de serviço (profissão, dias e horas de trabalho) não entram aqui.</p>
       <label for="nomeProduto">Nome do produto</label>
       <input id="nomeProduto" type="text" placeholder="Ex.: bolo de pote, vela artesanal, camiseta estampada">
-      <div class="row">
-        <div>
-          <label for="matProduto">Ingredientes ou material por unidade (R$)</label>
-          <input id="matProduto" type="number" inputmode="decimal" value="12" min="0">
-        </div>
-        <div>
-          <label for="embProduto">Embalagem por unidade (R$)</label>
-          <input id="embProduto" type="number" inputmode="decimal" value="2" min="0">
-        </div>
-      </div>
-      <label for="tempoProduto">Tempo para fazer uma unidade (minutos)</label>
-      <input id="tempoProduto" type="number" inputmode="decimal" value="30" min="0">
-      <div class="hint">Some preparo, produção e acabamento.</div>
     </section>
 
     <section class="card">
       <div class="step">Passo 2</div>
-      <h2>Quantas horas você trabalha no mês?</h2>
-      <p class="sub">Use os campos do Passo 2 da aba Serviço. Os custos, impostos e margem também são os mesmos.</p>
-      <button class="acao" id="calcularProduto" type="button">Ver quanto eu devo cobrar</button>
+      <h2>Quanto custa para fazer UMA unidade?</h2>
+      <p class="sub">Coloque o valor gasto em cada unidade produzida, em reais. Se você compra em lote, divida o valor do lote pela quantidade de unidades que ele rende.</p>
+      <label for="matProduto">Ingredientes ou material (R$)</label>
+      <input id="matProduto" type="number" inputmode="decimal" value="12" min="0">
+      <div class="hint">Tudo que entra no produto. Ex.: no bolo de pote, leite, chocolate e creme. Na camiseta, a peça e a tinta.</div>
+
+      <label for="embProduto">Embalagem (R$)</label>
+      <input id="embProduto" type="number" inputmode="decimal" value="2" min="0">
+      <div class="hint">Pote, caixinha, saquinho, etiqueta, fita. Só o que vai junto com cada unidade.</div>
+
+      <label for="outrosProduto">Outros custos por unidade (R$)</label>
+      <input id="outrosProduto" type="number" inputmode="decimal" value="1" min="0">
+      <div class="hint">Gás, energia, perdas ou combustível para entrega. Se não tiver, deixe 0.</div>
+
+      <details>
+        <summary>Como calcular o custo de um lote?</summary>
+        <p>Exemplo: você gasta R$ 60 de ingredientes e faz 10 unidades. O custo de ingrediente por unidade é R$ 60 ÷ 10 = R$ 6. Use esse valor no campo acima.</p>
+      </details>
     </section>
+
+    <section class="card">
+      <div class="step">Passo 3</div>
+      <h2>Quanto você quer ganhar com este produto?</h2>
+      <p class="sub">Diga o seu lucro desejado para cada unidade vendida. A calculadora descobre o preço que deixa esse lucro no seu bolso.</p>
+      <label for="lucroProduto">Lucro que quero por unidade vendida (R$)</label>
+      <input id="lucroProduto" type="number" inputmode="decimal" value="15" min="0">
+      <div class="hint">Quanto sobra para você em cada unidade, depois de pagar os custos e os impostos.</div>
+
+      <div class="row">
+        <div>
+          <label for="tempoProduto">Tempo para fazer uma unidade (minutos)</label>
+          <input id="tempoProduto" type="number" inputmode="decimal" value="30" min="0">
+          <div class="hint">Serve para mostrar quanto você ganha por hora de produção.</div>
+        </div>
+        <div>
+          <label for="qtdMesProduto">Unidades que pretendo vender por mês</label>
+          <input id="qtdMesProduto" type="number" inputmode="decimal" value="40" min="0">
+          <div class="hint">Serve para calcular o lucro do mês.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="step">Passo 4</div>
+      <h2>Impostos e taxas do produto</h2>
+      <label for="prodImposto">Seu regime de imposto</label>
+      <select id="prodImposto">
+        <option value="0">MEI (pago um valor fixo por mês; use 0 aqui)</option>
+        <option value="6" selected>Simples Nacional (exemplo: 6%)</option>
+        <option value="11">Lucro Presumido (exemplo: 11%)</option>
+      </select>
+      <div class="hint">Os percentuais são exemplos. Confirme com seu contador.</div>
+
+      <label for="maquininhaProduto">Qual maquininha você usa?</label>
+      <select id="maquininhaProduto">
+        <option value="3.24" selected>Média das principais maquininhas (3,24%)</option>
+        <option value="2.69">Stone (2,69%)</option>
+        <option value="3.08">Ton (3,08%)</option>
+        <option value="3.93">Mercado Pago (3,93%)</option>
+        <option value="3.64">Cielo (3,64%)</option>
+        <option value="3.24">PagBank / PagSeguro (3,24%)</option>
+        <option value="3.14">SumUp (3,14%)</option>
+        <option value="2.79">Rede (2,79%)</option>
+        <option value="3.15">InfinitePay (3,15%)</option>
+        <option value="3.49">Getnet (3,49%)</option>
+        <option value="custom">Outra / não sei (digitar abaixo)</option>
+      </select>
+      <div class="hint">Valores de referência de sites de comparação (2026). Podem mudar, então confira na sua maquininha ou no seu contrato.</div>
+      <div id="blocoTaxaCustom" class="hidden">
+        <label for="prodCartao">Qual a taxa de crédito à vista da sua maquininha? (%)</label>
+        <input id="prodCartao" type="number" inputmode="decimal" value="3.24" min="0" step="0.01">
+        <div class="hint">Procure no contrato ou no site da sua maquininha pela taxa de crédito à vista.</div>
+      </div>
+      <input type="hidden" id="prodCartaoPadrao" value="3.24">
+    </section>
+
+    <button class="acao" id="calcularProduto" type="button">Ver quanto eu devo cobrar</button>
 
     <section id="resultadoProduto" class="hidden"></section>
   </div>
@@ -696,54 +758,60 @@ function calcularServico() {
 // CÁLCULO: PRODUTO
 // ============================================================
 function calcularProduto() {
-  const p = parametros();
-  const dv = divisor(p);
-  const mat = num("matProduto"), emb = num("embProduto"), min = num("tempoProduto");
   const nome = $("nomeProduto").value.trim() || "seu produto";
+  const mat = num("matProduto");
+  const emb = num("embProduto");
+  const outros = num("outrosProduto");
+  const min = num("tempoProduto");
+  const lucro = num("lucroProduto");
+  const qtd = Math.max(num("qtdMesProduto"), 0);
+  const imp = num("prodImposto");
+  const cartao = num("prodCartao");
 
-  const custoHora = (p.custosFixos + p.proLabore) / p.horasMes;
-  const horaCobrar = custoHora / dv;
+  const dv = Math.max(1 - (imp + cartao) / 100, 0.05);
+  const custo = mat + emb + outros;
+  const preco = (custo + lucro) / dv;
+  const impV = preco * imp / 100;
+  const cartV = preco * cartao / 100;
   const horas = min / 60;
-  const maoObra = horas * custoHora;
-  const custoUnit = mat + emb + maoObra;
-  const preco = custoUnit / dv;
-  const faturamentoMes = (p.custosFixos + p.proLabore) / dv;
-  const unidadesMes = Math.ceil(faturamentoMes / preco);
-  const impV = preco * (p.imposto + p.iss + p.cartao) / 100;
-  const margV = preco * p.margem / 100;
+  const lucroHora = horas > 0 ? lucro / horas : 0;
+  const faturamentoMes = preco * qtd;
+  const lucroMes = lucro * qtd;
 
   $("resultadoProduto").innerHTML = `
     <div class="res-topo">
       <div class="pre">Para <b>${nome}</b>, você deve cobrar por unidade:</div>
       <div class="hora">${brl(preco)} <small>por unidade</small></div>
-      <p class="explica">Esse preço já inclui o seu tempo, impostos, taxas e sua margem. Enquanto produz, você ganha ${brl(horaCobrar)} por hora.</p>
+      <p class="explica">Esse preço deixa <b>${brl(lucro)}</b> de lucro para você em cada unidade vendida, depois de pagar os custos, os impostos e a taxa do cartão.</p>
     </div>
 
     <div class="grid3">
-      <div class="mini"><b>Valor da sua hora</b><span>${brl(horaCobrar)}</span><small>para cobrar do seu tempo</small></div>
-      <div class="mini"><b>Tempo por unidade</b><span>${fmt(min, 0)} min</span><small>preparo e acabamento</small></div>
-      <div class="mini"><b>Unidades por mês</b><span>${unidadesMes}</span><small>para fechar o mês com ${brl(p.proLabore)} de salário</small></div>
+      <div class="mini"><b>Seu lucro por unidade</b><span>${brl(lucro)}</span><small>o que você quer ganhar</small></div>
+      <div class="mini"><b>Lucro por hora de produção</b><span>${horas > 0 ? brl(lucroHora) : "—"}</span><small>${fmt(min, 0)} min por unidade</small></div>
+      <div class="mini"><b>Lucro no mês</b><span>${brl(lucroMes)}</span><small>com ${fmt(qtd, 0)} unidades</small></div>
     </div>
 
     <div class="bloco">
       <h3>De onde vem esse preço de ${brl(preco)}</h3>
       <table>
-        <tr><td>Ingredientes ou material<small>o que entra no produto</small></td><td class="v">${brl(mat)}</td></tr>
-        <tr><td>Embalagem<small>caixa, saquinho, etiqueta</small></td><td class="v">${brl(emb)}</td></tr>
-        <tr><td>Seu tempo<small>${fmt(min, 0)} min × ${brl(custoHora)} por hora de custo</small></td><td class="v">${brl(maoObra)}</td></tr>
-        <tr class="total"><td>Custo por unidade</td><td class="v">${brl(custoUnit)}</td></tr>
-        <tr><td>Impostos, ISS e taxa do cartão<small>juntos, sobre o preço final</small></td><td class="v">${brl(impV)}</td></tr>
-        <tr><td>Sua margem (${fmt(p.margem)}%)<small>lucro e reserva</small></td><td class="v">${brl(margV)}</td></tr>
+        <tr><td>Ingredientes ou material<small>o valor gasto em cada unidade</small></td><td class="v">${brl(mat)}</td></tr>
+        <tr><td>Embalagem<small>pote, caixinha, saquinho, etiqueta</small></td><td class="v">${brl(emb)}</td></tr>
+        <tr><td>Outros custos<small>gás, energia, perdas, entrega</small></td><td class="v">${brl(outros)}</td></tr>
+        <tr class="total"><td>Custo para fazer uma unidade</td><td class="v">${brl(custo)}</td></tr>
+        <tr><td>Seu lucro desejado<small>o que você quer ganhar por unidade</small></td><td class="v">${brl(lucro)}</td></tr>
+        <tr><td>Impostos (${fmt(imp)}%)<small>vai para o governo, sobre o preço final</small></td><td class="v">${brl(impV)}</td></tr>
+        <tr><td>Taxa da maquininha (${fmt(cartao)}%)<small>quando o cliente paga no cartão</small></td><td class="v">${brl(cartV)}</td></tr>
         <tr class="total"><td>Preço final por unidade</td><td class="v">${brl(preco)}</td></tr>
       </table>
+      <div class="frase">Dos <b>${brl(preco)}</b> que o cliente paga, <b>${brl(custo)}</b> são para produzir, <b>${brl(impV + cartV)}</b> vão para impostos e taxas, e <b>${brl(lucro)}</b> ficam com você.</div>
     </div>
 
     <div class="bloco">
       <h3>Resumo em uma frase</h3>
-      <p>Para ganhar <b>${brl(p.proLabore)}</b> por mês e pagar <b>${brl(p.custosFixos)}</b> de custos, você precisa vender cerca de <b>${unidadesMes}</b> unidades por mês a <b>${brl(preco)}</b> cada.</p>
+      <p>Para ganhar <b>${brl(lucroMes)}</b> por mês vendendo <b>${fmt(qtd, 0)}</b> unidades, você precisa cobrar <b>${brl(preco)}</b> por unidade. O faturamento do mês será de <b>${brl(faturamentoMes)}</b>.</p>
     </div>
 
-    <p class="aviso">Estimativa. Ajuste os custos com os valores reais de um lote que você já fez.</p>
+    <p class="aviso">Estimativa com os valores que você informou. Ajuste os custos com o que você gastou de verdade em um lote.</p>
   `;
   $("resultadoProduto").classList.remove("hidden");
   $("resultadoProduto").scrollIntoView({ behavior: "smooth", block: "start" });
@@ -764,6 +832,13 @@ $("variacao").addEventListener("change", () => $("resultadoServico").classList.a
 $("diasSemana").addEventListener("change", atualizarHoras);
 $("horasDia").addEventListener("input", atualizarHoras);
 $("calcularServico").addEventListener("click", calcularServico);
+$("maquininhaProduto").addEventListener("change", () => {
+  const v = $("maquininhaProduto").value;
+  const outra = v === "custom";
+  $("blocoTaxaCustom").classList.toggle("hidden", !outra);
+  if (!outra) $("prodCartao").value = v;
+  else $("prodCartao").value = "";
+});
 $("calcularProduto").addEventListener("click", calcularProduto);
 
 $("tabServico").addEventListener("click", () => trocarAba("servico"));
