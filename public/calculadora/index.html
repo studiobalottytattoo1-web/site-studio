@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Calculadora gratuita para autônomos: descubra quanto cobrar por hora e por serviço, com impostos e taxas explicados em linguagem simples.">
+<title>Quanto cobrar? Calculadora de preço</title>
+<meta name="theme-color" content="#1f1d1a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Quanto cobrar">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect x='40' y='22' width='110' height='150' rx='16' fill='%233f2375'/%3E%3Crect x='52' y='34' width='86' height='50' rx='8' fill='%23e8e6fb'/%3E%3Cpath d='M68 40 L110 76 M110 40 L72 76' stroke='%233f2375' stroke-width='9' stroke-linecap='round'/%3E%3Crect x='50' y='98' width='32' height='14' rx='4' fill='%23ecebf7'/%3E%3Crect x='88' y='98' width='32' height='14' rx='4' fill='%23ecebf7'/%3E%3Crect x='50' y='120' width='32' height='14' rx='4' fill='%23ecebf7'/%3E%3Crect x='88' y='120' width='32' height='14' rx='4' fill='%23ecebf7'/%3E%3Crect x='124' y='112' width='22' height='34' rx='5' fill='%23f57c1f'/%3E%3Cellipse cx='100' cy='112' rx='94' ry='32' transform='rotate(-18 100 112)' fill='none' stroke='%23f79a1e' stroke-width='10'/%3E%3Ccircle cx='146' cy='122' r='34' fill='%23f5b82e'/%3E%3Ctext x='146' y='137' font-size='44' font-weight='700' text-anchor='middle' fill='%23fff8e6' font-family='Arial'%3E%24%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect x='40' y='22' width='110' height='150' rx='16' fill='%233f2375'/%3E%3Crect x='52' y='34' width='86' height='50' rx='8' fill='%23e8e6fb'/%3E%3Cpath d='M68 40 L110 76 M110 40 L72 76' stroke='%233f2375' stroke-width='9' stroke-linecap='round'/%3E%3Crect x='50' y='98' width='32' height='14' rx='4' fill='%23ecebf7'/%3E%3Crect x='88' y='98' width='32' height='14' rx='4' fill='%23ecebf7'/%3E%3Crect x='50' y='120' width='32' height='14' rx='4' fill='%23ecebf7'/%3E%3Crect x='88' y='120' width='32' height='14' rx='4' fill='%23ecebf7'/%3E%3Crect x='124' y='112' width='22' height='34' rx='5' fill='%23f57c1f'/%3E%3Cellipse cx='100' cy='112' rx='94' ry='32' transform='rotate(-18 100 112)' fill='none' stroke='%23f79a1e' stroke-width='10'/%3E%3Ccircle cx='146' cy='122' r='34' fill='%23f5b82e'/%3E%3Ctext x='146' y='137' font-size='44' font-weight='700' text-anchor='middle' fill='%23fff8e6' font-family='Arial'%3E%24%3C/text%3E%3C/svg%3E">
+<style>
+  :root { --bg:#f4f1ec; --card:#fff; --ink:#1f1d1a; --muted:#6b655c; --accent:#b5452b; --ok:#2f6f5e; --line:#e2dcd2; --soft:#eef6f3; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; background:var(--bg); color:var(--ink); line-height:1.5; }
+  header { background:var(--ink); color:#fff; padding:20px 16px; text-align:center; }
+  header h1 { margin:0 0 4px; font-size:1.35rem; }
+  header p { margin:0; color:#d7d1c6; font-size:.92rem; }
+  .badge { display:inline-block; background:#f1c40f22; color:#f5d76e; border:1px solid #f5d76e66; border-radius:999px; padding:2px 10px; font-size:.75rem; margin-bottom:8px; }
+  .logo { width:76px; height:76px; display:block; margin:0 auto 8px; }
+  main { max-width:620px; margin:0 auto; padding:16px; }
+  .tabs { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:14px; }
+  .tab { padding:12px; border:1px solid var(--line); border-radius:12px; background:#fff; font-weight:600; cursor:pointer; color:var(--muted); width:100%; font-size:1rem; margin-top:0; }
+  .tab.on { background:var(--ink); color:#fff; border-color:var(--ink); }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px; margin-bottom:14px; }
+  .card h2 { font-size:1rem; margin:0 0 4px; }
+  .step { font-size:.78rem; color:var(--accent); font-weight:700; text-transform:uppercase; letter-spacing:.04em; margin-bottom:2px; }
+  .sub { font-size:.85rem; color:var(--muted); margin:0 0 10px; }
+  label { display:block; font-size:.88rem; color:var(--ink); margin:12px 0 4px; font-weight:600; }
+  select, input { width:100%; padding:11px 12px; font-size:1rem; border:1px solid var(--line); border-radius:10px; background:#fff; color:var(--ink); }
+  .row { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .hint { font-size:.78rem; color:var(--muted); margin-top:4px; }
+  .search-wrap { position:relative; }
+  .sugg { position:absolute; left:0; right:0; top:100%; background:#fff; border:1px solid var(--line); border-radius:10px; box-shadow:0 8px 24px #0002; z-index:10; margin-top:4px; overflow:hidden; }
+  .sugg div { padding:11px 12px; cursor:pointer; border-bottom:1px solid var(--line); font-size:.95rem; }
+  .sugg div:last-child { border-bottom:0; }
+  .sugg div:hover, .sugg div:active { background:var(--bg); }
+  .sugg small { display:block; color:var(--muted); font-size:.76rem; }
+  .sugg .head { font-size:.75rem; color:var(--muted); background:#faf8f4; cursor:default; }
+  .horas-box { background:var(--soft); border:1px solid #cfe5dc; border-radius:12px; padding:12px; margin-top:12px; }
+  .horas-box .linha { display:flex; justify-content:space-between; gap:8px; font-size:.92rem; padding:3px 0; }
+  .horas-box .linha b { font-variant-numeric:tabular-nums; }
+  .horas-box .grande { font-size:1.15rem; color:var(--ok); }
+  details { background:#faf8f4; border:1px solid var(--line); border-radius:10px; padding:10px 12px; margin-top:12px; font-size:.86rem; }
+  details summary { cursor:pointer; font-weight:600; }
+  details p { margin:8px 0 0; color:var(--muted); }
+  button.acao { width:100%; padding:15px; font-size:1.05rem; font-weight:700; border:0; border-radius:12px; background:var(--accent); color:#fff; cursor:pointer; margin-top:4px; }
+  button.acao:active { transform:scale(.99); }
+  #resultado { scroll-margin-top:12px; }
+  .res-topo { text-align:center; background:var(--card); border:2px solid var(--ok); border-radius:14px; padding:18px 14px; margin-bottom:14px; }
+  .res-topo .pre { color:var(--muted); font-size:.92rem; }
+  .res-topo .hora { font-size:2.5rem; font-weight:800; color:var(--ok); line-height:1.1; margin:4px 0; }
+  .res-topo .hora small { font-size:1rem; color:var(--ink); font-weight:600; }
+  .res-topo .explica { font-size:.88rem; color:var(--muted); margin:6px 0 0; }
+  .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:14px; }
+  .mini { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:10px 8px; text-align:center; }
+  .mini b { display:block; font-size:.76rem; color:var(--muted); font-weight:600; }
+  .mini span { display:block; font-size:1.05rem; font-weight:700; margin:3px 0; font-variant-numeric:tabular-nums; }
+  .mini small { font-size:.7rem; color:var(--muted); }
+  .bloco { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:14px; margin-bottom:14px; }
+  .bloco h3 { font-size:.98rem; margin:0 0 8px; }
+  .bloco p { font-size:.9rem; margin:0 0 6px; }
+  .frase { background:var(--soft); border-radius:10px; padding:10px 12px; font-size:.92rem; margin-top:8px; }
+  table { width:100%; border-collapse:collapse; font-size:.9rem; }
+  td { padding:8px 0; border-bottom:1px dashed var(--line); vertical-align:top; }
+  td small { display:block; color:var(--muted); font-size:.75rem; }
+  td.v { text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums; padding-left:8px; }
+  tr.total td { font-weight:700; border-bottom:2px solid var(--ink); }
+  .aviso { font-size:.8rem; color:var(--muted); }
+  .hidden { display:none !important; }
+  footer { text-align:center; color:var(--muted); font-size:.78rem; padding:10px 16px 30px; }
+  @media (max-width:520px) { .row, .grid3 { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<header>
+  <svg class="logo" viewBox="0 0 200 200" role="img" aria-label="Logo: calculadora com ferramentas e moeda">
+    <rect x="40" y="22" width="110" height="150" rx="16" fill="#3f2375"/>
+    <rect x="52" y="34" width="86" height="50" rx="8" fill="#e8e6fb"/>
+    <path d="M68 40 L110 76 M110 40 L72 76" stroke="#3f2375" stroke-width="9" stroke-linecap="round"/>
+    <rect x="50" y="98" width="32" height="14" rx="4" fill="#ecebf7"/>
+    <rect x="88" y="98" width="32" height="14" rx="4" fill="#ecebf7"/>
+    <rect x="50" y="120" width="32" height="14" rx="4" fill="#ecebf7"/>
+    <rect x="88" y="120" width="32" height="14" rx="4" fill="#ecebf7"/>
+    <rect x="124" y="112" width="22" height="34" rx="5" fill="#f57c1f"/>
+    <path d="M124 124h22M124 136h22" stroke="#fff8e6" stroke-width="3" stroke-linecap="round"/>
+    <ellipse cx="100" cy="112" rx="94" ry="32" transform="rotate(-18 100 112)" fill="none" stroke="#f79a1e" stroke-width="10"/>
+    <circle cx="146" cy="122" r="34" fill="#f5b82e" stroke="#e89a12" stroke-width="5"/>
+    <circle cx="146" cy="122" r="24" fill="#ffd54a"/>
+    <text x="146" y="137" font-size="44" font-weight="700" text-anchor="middle" fill="#fff8e6" font-family="Arial">$</text>
+  </svg>
+  <h1>Quanto eu devo cobrar?</h1>
+  <p>Descubra quanto cobrar por hora e por serviço, com cada imposto explicado.</p>
+</header>
+
+<main>
+
+  <div class="tabs">
+    <button class="tab on" id="tabServico" type="button">Serviço</button>
+    <button class="tab" id="tabProduto" type="button">Produto</button>
+  </div>
+
+  <!-- ===================== ENTRADA: SERVIÇO ===================== -->
+  <div id="blocoServico">
+
+    <section class="card">
+      <div class="step">Passo 1</div>
+      <h2>Qual é o seu trabalho?</h2>
+      <p class="sub">Digite o nome da profissão. Se não achar exato, a gente sugere as mais parecidas.</p>
+      <label for="buscaProf">Profissão</label>
+      <div class="search-wrap">
+        <input id="buscaProf" type="text" autocomplete="off" placeholder="Ex.: tatuador, eletricista, diarista...">
+        <div class="sugg hidden" id="listaSugg"></div>
+      </div>
+      <div class="hint" id="profEscolhida"></div>
+
+      <div id="escolhas" class="hidden">
+        <label for="servico">Serviço</label>
+        <select id="servico"></select>
+
+        <label for="variacao">Tamanho ou detalhe do serviço</label>
+        <select id="variacao"></select>
+
+        <label for="experiencia">Quanto tempo você trabalha nisso?</label>
+        <select id="experiencia">
+          <option value="1.25">Comecei agora (até 2 anos)</option>
+          <option value="1.10" selected>Já tenho prática (2 a 5 anos)</option>
+          <option value="1.00">Sou experiente (mais de 5 anos)</option>
+        </select>
+        <div class="hint">Quem está começando leva mais tempo em cada atendimento. Esse ajuste já entra no cálculo.</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="step">Passo 2</div>
+      <h2>Quantas horas você trabalha no mês?</h2>
+      <p class="sub">Preencha só 2 campos. O resto a calculadora faz.</p>
+      <div class="row">
+        <div>
+          <label for="diasSemana">Dias por semana</label>
+          <select id="diasSemana">
+            <option value="1">1 dia</option><option value="2">2 dias</option><option value="3">3 dias</option>
+            <option value="4">4 dias</option><option value="5" selected>5 dias</option><option value="6">6 dias</option>
+            <option value="7">7 dias</option>
+          </select>
+        </div>
+        <div>
+          <label for="horasDia">Horas por dia</label>
+          <input id="horasDia" type="number" inputmode="decimal" value="6" min="0.5" max="24" step="0.5">
+        </div>
+      </div>
+      <div class="horas-box">
+        <div class="linha"><span>Horas por semana</span><b id="horasSemana">30 h</b></div>
+        <div class="linha grande"><span><b>Horas trabalhadas no mês</b></span><b id="horasMesTxt">130 h</b></div>
+        <div class="aviso">Conta feita com 4,33 semanas por mês (52 semanas divididas por 12 meses).</div>
+      </div>
+      <details>
+        <summary>O que são horas produtivas?</summary>
+        <p>São as horas em que você está de fato atendendo ou produzindo para o cliente. Não conte o tempo de deslocamento, de conversa ou de espera, a menos que você cobre por ele.</p>
+      </details>
+    </section>
+
+    <section class="card">
+      <div class="step">Passo 3</div>
+      <h2>Quanto custa para trabalhar e quanto você quer ganhar?</h2>
+      <div class="row">
+        <div>
+          <label for="custosFixos">Custos fixos por mês (R$)</label>
+          <input id="custosFixos" type="number" inputmode="decimal" value="4000" min="0">
+          <div class="hint">Aluguel, luz, internet, água, contas do ponto.</div>
+        </div>
+        <div>
+          <label for="proLabore">Quanto você quer receber por mês (R$)</label>
+          <input id="proLabore" type="number" inputmode="decimal" value="3000" min="0">
+          <div class="hint">Seu salário livre, depois de pagar as contas.</div>
+        </div>
+      </div>
+      <details>
+        <summary>Não sabe quanto colocar nos custos fixos?</summary>
+        <p>Some tudo que você paga todo mês para o trabalho funcionar, mesmo que não tenha cliente naquela semana. Se não souber, olhe seus extratos dos últimos 3 meses e divida o total por 3.</p>
+      </details>
+    </section>
+
+    <section class="card">
+      <div class="step">Passo 4</div>
+      <h2>Impostos e taxas</h2>
+      <p class="sub">Dinheiro que sai do seu preço antes de você receber. A calculadora mostra cada um.</p>
+      <label for="imposto">Seu regime de imposto</label>
+      <select id="imposto">
+        <option value="0">MEI (pago um valor fixo por mês; use 0 aqui)</option>
+        <option value="6" selected>Simples Nacional (exemplo: 6%)</option>
+        <option value="11">Lucro Presumido (exemplo: 11%)</option>
+      </select>
+      <div class="hint">Os percentuais são exemplos. Confirme com seu contador.</div>
+      <div class="row">
+        <div>
+          <label for="iss">Imposto da prefeitura, ISS (%)</label>
+          <input id="iss" type="number" inputmode="decimal" value="5" min="0" max="5" step="0.5">
+          <div class="hint">Entre 2% e 5% para serviços. Use 0 para produto.</div>
+        </div>
+        <div>
+          <label for="taxaCartao">Taxa da maquininha (%)</label>
+          <input id="taxaCartao" type="number" inputmode="decimal" value="3" min="0" step="0.1">
+          <div class="hint">Quando o cliente paga no cartão.</div>
+        </div>
+      </div>
+      <label for="margem">Sua margem de lucro (%)</label>
+      <input id="margem" type="number" inputmode="decimal" value="10" min="0" max="80">
+      <div class="hint">Reserva para imprevistos, crescer e lucro extra.</div>
+    </section>
+
+    <button class="acao" id="calcularServico" type="button">Ver quanto eu devo cobrar</button>
+
+    <section id="resultadoServico" class="hidden"></section>
+  </div>
+
+  <!-- ===================== ENTRADA: PRODUTO ===================== -->
+  <div id="blocoProduto" class="hidden">
+    <section class="card">
+      <div class="step">Passo 1</div>
+      <h2>Seu produto</h2>
+      <label for="nomeProduto">Nome do produto</label>
+      <input id="nomeProduto" type="text" placeholder="Ex.: bolo de pote, vela artesanal, camiseta estampada">
+      <div class="row">
+        <div>
+          <label for="matProduto">Ingredientes ou material por unidade (R$)</label>
+          <input id="matProduto" type="number" inputmode="decimal" value="12" min="0">
+        </div>
+        <div>
+          <label for="embProduto">Embalagem por unidade (R$)</label>
+          <input id="embProduto" type="number" inputmode="decimal" value="2" min="0">
+        </div>
+      </div>
+      <label for="tempoProduto">Tempo para fazer uma unidade (minutos)</label>
+      <input id="tempoProduto" type="number" inputmode="decimal" value="30" min="0">
+      <div class="hint">Some preparo, produção e acabamento.</div>
+    </section>
+
+    <section class="card">
+      <div class="step">Passo 2</div>
+      <h2>Quantas horas você trabalha no mês?</h2>
+      <p class="sub">Use os campos do Passo 2 da aba Serviço. Os custos, impostos e margem também são os mesmos.</p>
+      <button class="acao" id="calcularProduto" type="button">Ver quanto eu devo cobrar</button>
+    </section>
+
+    <section id="resultadoProduto" class="hidden"></section>
+  </div>
+
+  <section class="card">
+    <h2>Aviso</h2>
+    <p class="aviso">
+      Os tempos, materiais e percentuais das profissões são exemplos para você ajustar, e não valores de mercado.
+      O resultado é uma estimativa de custo para você definir o seu preço, e não uma recomendação de preço.
+      Não substitui a orientação de um contador.
+    </p>
+  </section>
+
+</main>
+
+<footer>Ferramenta gratuita. Use, compartilhe e adapte à sua realidade.</footer>
+
+<script>
+// ============================================================
+// DADOS. Formato de cada profissão:
+// [nome, segmento, apelidos, [ [servico, [ [variacao, horas, materiais], ... ] ], ... ] ]
+// horas = tempo de mão de obra por atendimento (antes do ajuste de experiência); materiais = R$ por atendimento.
+// TODOS os valores são exemplos para revisar com a experiência de cada profissional.
+// ============================================================
+const PROFISSOES = [
+  // ---------- Beleza e estética ----------
+  ["Cabeleireiro(a)", "Beleza e estética", "cabelo hair salao corte", [
+    ["Corte", [["Corte simples", 0.75, 3], ["Corte com finalização", 1.25, 8]]],
+    ["Coloração", [["Raiz", 1.5, 30], ["Coloração completa", 2.5, 55]]]]],
+  ["Barbeiro(a)", "Beleza e estética", "barba barbearia corte masculino", [
+    ["Corte masculino", [["Corte simples", 0.5, 2], ["Corte + barba", 0.8, 4]]]]],
+  ["Manicure e pedicure", "Beleza e estética", "unha unhas manicure pedicure esmalte", [
+    ["Manicure", [["Mão com esmaltação", 0.75, 5], ["Mão com gel", 1.25, 20]]],
+    ["Pedicure", [["Pé com esmaltação", 0.75, 5]]]]],
+  ["Designer de unhas", "Beleza e estética", "nail designer unha de gel fibra alongamento", [
+    ["Alongamento", [["Fibra", 2, 35], ["Gel", 2.5, 45]]]]],
+  ["Maquiador(a)", "Beleza e estética", "maquiagem make maquiadora noiva", [
+    ["Maquiagem social", [["Festa simples", 1, 25], ["Maquiagem de noiva", 2, 60]]]]],
+  ["Designer de sobrancelhas", "Beleza e estética", "sobrancelha design brow henna", [
+    ["Design", [["Design com pinça", 0.5, 3], ["Design com henna", 0.75, 10]]]]],
+  ["Lash designer", "Beleza e estética", "cílios lash extensão de cílios volume", [
+    ["Extensão de cílios", [["Fio a fio clássico", 1.5, 25], ["Volume russo", 2, 35]]]]],
+  ["Esteticista", "Beleza e estética", "estetica limpeza de pele peeling facial", [
+    ["Limpeza de pele", [["Limpeza simples", 1, 15], ["Limpeza profunda", 1.5, 30]]]]],
+  ["Depilador(a)", "Beleza e estética", "depilacao cera depilar", [
+    ["Depilação com cera", [["Axila ou buço", 0.25, 4], ["Pernas inteiras", 0.75, 12]]]]],
+  ["Visagista", "Beleza e estética", "visagismo visagista consultoria de imagem", [
+    ["Consultoria de imagem", [["Consulta online", 1, 0], ["Consulta presencial com roupas", 2, 0]]]]],
+
+  // ---------- Tatuagem e piercing ----------
+  ["Tatuador(a)", "Tatuagem e piercing", "tatuagem tattoo tatuadora tatuador", [
+    ["Tatuagem", [["Pequena (até 5 cm)", 1.5, 15], ["Média (5 a 15 cm)", 3, 25], ["Grande (acima de 15 cm), sessão única", 5, 35]]],
+    ["Camuflagem de cicatriz", [["Até 10 cm", 2, 30], ["Mais de 10 cm", 3.5, 45]]]]],
+  ["Body piercer", "Tatuagem e piercing", "piercing piercer body piercing", [
+    ["Piercing", [["Orelha ou nariz", 0.5, 25], ["Cartilagem ou umbigo", 0.75, 35]]]]],
+  ["Micropigmentador(a)", "Tatuagem e piercing", "micropigmentacao micro pigmentacao sobrancelha labial", [
+    ["Micropigmentação", [["Sobrancelha", 2, 40], ["Lábios", 2.5, 45]]]]],
+  ["Técnico de remoção de tatuagem", "Tatuagem e piercing", "remocao de tatuagem remocao de pigmentos laser", [
+    ["Remoção a laser", [["Sessão pequena", 0.5, 0], ["Sessão média", 0.75, 0]]]]],
+
+  // ---------- Reparos e construção ----------
+  ["Eletricista", "Reparos e construção", "eletrica instalacao eletrica tomada interruptor", [
+    ["Troca de tomada ou interruptor", [["Uma peça", 1, 12], ["Três peças", 2, 35]]],
+    ["Instalação de ponto de luz", [["Ponto simples", 2.5, 60], ["Ponto com fiação nova", 5, 120]]]]],
+  ["Encanador(a)", "Reparos e construção", "encanamento hidraulico vazamento cano", [
+    ["Reparo hidráulico", [["Troca de torneira", 1, 20], ["Vazamento em cano", 2.5, 60]]]]],
+  ["Pintor(a)", "Reparos e construção", "pintura pintor parede tinta", [
+    ["Pintura de parede", [["Cômodo pequeno", 6, 90], ["Cômodo grande", 12, 180]]]]],
+  ["Gesseiro(a)", "Reparos e construção", "gesso gesseiro forro sanca drywall", [
+    ["Forro de gesso", [["Até 10 m²", 6, 80], ["10 a 30 m²", 14, 200]]]]],
+  ["Marceneiro(a)", "Reparos e construção", "marcenaria marceneiro movel sob medida", [
+    ["Móvel sob medida", [["Armário pequeno", 16, 250], ["Armário grande", 40, 600]]]]],
+  ["Serralheiro(a)", "Reparos e construção", "serralheria portao grade ferro", [
+    ["Portão ou grade", [["Grade simples", 6, 150], ["Portão de correr", 14, 450]]]]],
+  ["Vidraceiro(a)", "Reparos e construção", "vidro vidraceiro box espelho", [
+    ["Troca de vidro", [["Vidro pequeno", 1.5, 80], ["Box de banheiro", 4, 350]]]]],
+  ["Azulejista", "Reparos e construção", "azulejo ceramica revestimento piso", [
+    ["Assentamento", [["Banheiro pequeno", 8, 120], ["Cozinha", 12, 200]]]]],
+  ["Pedreiro(a)", "Reparos e construção", "pedreiro reforma construcao alvenaria", [
+    ["Pequeno reparo", [["Reboco de parede pequena", 4, 40], ["Pequena alvenaria", 8, 120]]]]],
+  ["Impermeabilizador(a)", "Reparos e construção", "impermeabilizacao telhado laje infiltracao", [
+    ["Impermeabilização", [["Laje pequena", 8, 200], ["Laje média", 16, 420]]]]],
+  ["Técnico de ar-condicionado", "Reparos e construção", "ar condicionado ar-condicionado split instalacao manutencao", [
+    ["Instalação de split", [["Split 9.000 BTU", 3, 180], ["Split 12.000 BTU", 4, 230]]],
+    ["Manutenção", [["Limpeza simples", 1.5, 15], ["Limpeza completa com gás", 2.5, 60]]]]],
+  ["Técnico em refrigeração", "Reparos e construção", "geladeira refrigeracao freezer conserto", [
+    ["Conserto de eletrodoméstico", [["Diagnóstico e ajuste", 1, 10], ["Troca de componente", 2.5, 80]]]]],
+  ["Dedetizador(a)", "Reparos e construção", "dedetizacao desinsetizacao controle de pragas", [
+    ["Dedetização", [["Residência pequena", 2, 60], ["Residência grande", 4, 120]]]]],
+  ["Montador(a) de móveis", "Reparos e construção", "montagem de movel montador", [
+    ["Montagem", [["Guarda-roupa pequeno", 1.5, 0], ["Guarda-roupa grande", 3, 0]]]]],
+  ["Chaveiro(a)", "Reparos e construção", "chaveiro chave cópia fechadura", [
+    ["Serviço de chaveiro", [["Cópia de chave", 0.25, 2], ["Troca de fechadura", 1, 60]]]]],
+  ["Instalador de drywall", "Reparos e construção", "drywall parede divisoria painel", [
+    ["Divisória", [["Até 5 m²", 6, 120], ["5 a 15 m²", 12, 260]]]]],
+  ["Instalador de box", "Reparos e construção", "box de banheiro box vidro temperado", [
+    ["Instalação de box", [["Box de correr", 3, 150], ["Box de abrir", 4, 220]]]]],
+
+  // ---------- Serviços domésticos ----------
+  ["Diarista", "Serviços domésticos", "faxina limpeza casa diaria diarista", [
+    ["Diária de limpeza", [["Apartamento pequeno (4h)", 4, 10], ["Casa média (6h)", 6, 15]]]]],
+  ["Faxineiro(a) pós-obra", "Serviços domésticos", "limpeza pos obra faxina pesada", [
+    ["Limpeza pós-obra", [["Apartamento pequeno", 8, 60], ["Casa média", 14, 120]]]]],
+  ["Passadeira(o)", "Serviços domésticos", "passar roupa passadeira ferro", [
+    ["Passar roupas", [["Até 20 peças", 2, 0], ["Até 50 peças", 4, 0]]]]],
+  ["Jardineiro(a)", "Serviços domésticos", "jardim jardinagem poda gramado paisagismo", [
+    ["Manutenção de jardim", [["Jardim pequeno", 2, 10], ["Jardim médio", 4, 25]]]]],
+  ["Cuidador(a) de idosos", "Serviços domésticos", "cuidador idoso acompanhante cuidadora", [
+    ["Acompanhamento", [["Plantão de 4h", 4, 0], ["Plantão de 8h", 8, 0]]]]],
+  ["Babá", "Serviços domésticos", "baba cuidadora de criancas", [
+    ["Cuidado infantil", [["Turno de 4h", 4, 0], ["Turno de 8h", 8, 0]]]]],
+  ["Lavador(a) de estofados", "Serviços domésticos", "estofado sofa lavagem higienizacao", [
+    ["Higienização", [["Sofá 2 lugares", 2, 25], ["Sofá 3 lugares", 3, 35]]]]],
+  ["Organizador(a) de ambientes", "Serviços domésticos", "organizacao organizador armario", [
+    ["Organização", [["Um cômodo", 4, 0], ["Casa inteira", 10, 0]]]]],
+
+  // ---------- Saúde e bem-estar ----------
+  ["Personal trainer", "Saúde e bem-estar", "personal treino academia musculacao", [
+    ["Aula individual", [["Aula de 1h", 1, 0], ["Pacote de 4 aulas", 4, 0]]]]],
+  ["Instrutor(a) de pilates", "Saúde e bem-estar", "pilates aula de pilates", [
+    ["Aula", [["Aula individual", 1, 0], ["Aula em grupo", 1, 0]]]]],
+  ["Massoterapeuta", "Saúde e bem-estar", "massagem massoterapia relaxante", [
+    ["Massagem", [["Relaxante 50 min", 1, 10], ["Terapêutica 1h30", 1.5, 15]]]]],
+  ["Nutricionista", "Saúde e bem-estar", "nutri nutricao dieta plano alimentar", [
+    ["Consulta", [["Primeira consulta", 1.5, 0], ["Retorno", 0.75, 0]]]]],
+  ["Fisioterapeuta", "Saúde e bem-estar", "fisio fisioterapia reabilitacao", [
+    ["Sessão", [["Sessão individual", 1, 5], ["Sessão de 1h30", 1.5, 8]]]]],
+  ["Psicólogo(a)", "Saúde e bem-estar", "psicologia psicoterapia terapia", [
+    ["Sessão", [["Sessão de 50 min", 1, 0], ["Avaliação inicial", 1.5, 0]]]]],
+  ["Fonoaudiólogo(a)", "Saúde e bem-estar", "fono fonoaudiologia fala terapia", [
+    ["Sessão", [["Sessão de 40 min", 0.75, 0], ["Avaliação", 1.5, 0]]]]],
+  ["Podólogo(a)", "Saúde e bem-estar", "podologia pés unha encravada calo", [
+    ["Atendimento", [["Cuidado de pés", 1, 15], ["Unha encravada", 1.5, 30]]]]],
+  ["Acupunturista", "Saúde e bem-estar", "acupuntura agulhas terapia chinesa", [
+    ["Sessão", [["Sessão de 1h", 1, 5], ["Primeira consulta", 1.5, 8]]]]],
+  ["Enfermeiro(a) de home care", "Saúde e bem-estar", "enfermagem home care curativo cuidado domiciliar", [
+    ["Atendimento domiciliar", [["Curativo simples", 1, 15], ["Visita de 4h", 4, 30]]]]],
+
+  // ---------- Criativos e digitais ----------
+  ["Designer gráfico", "Criativos e digitais", "design grafico logo identidade visual", [
+    ["Logo", [["Logo simples, 2 propostas", 6, 0], ["Logo com manual de marca", 14, 0]]],
+    ["Post para redes sociais", [["Post único", 1.5, 0], ["Pacote de 10 posts", 12, 0]]]]],
+  ["Designer de interiores", "Criativos e digitais", "interiores projeto decoracao ambientes", [
+    ["Projeto", [["Projeto de um cômodo", 12, 0], ["Projeto de apartamento", 30, 0]]]]],
+  ["Fotógrafo(a)", "Criativos e digitais", "foto fotografia ensaio fotografo", [
+    ["Ensaio", [["Ensaio de 1h", 2, 0], ["Ensaio de 3h com edição", 6, 0]]]]],
+  ["Videomaker", "Criativos e digitais", "video filmagem filmar produção de video", [
+    ["Vídeo", [["Vídeo curto (até 1 min)", 4, 0], ["Vídeo institucional", 12, 0]]]]],
+  ["Editor(a) de vídeo", "Criativos e digitais", "edicao de video editor reels", [
+    ["Edição", [["Reels (até 1 min)", 2, 0], ["Vídeo longo (até 10 min)", 6, 0]]]]],
+  ["Social media", "Criativos e digitais", "redes sociais gestao instagram conteudo", [
+    ["Gestão mensal", [["Até 12 posts por mês", 10, 0], ["Até 20 posts por mês", 16, 0]]]]],
+  ["Gestor(a) de tráfego", "Criativos e digitais", "trafego pago anuncios meta ads google ads", [
+    ["Gestão de campanhas", [["Até 1 campanha", 4, 0], ["Até 3 campanhas", 8, 0]]]]],
+  ["Copywriter", "Criativos e digitais", "redacao texto copy textos vendas", [
+    ["Texto", [["Post ou legenda", 1, 0], ["Página de vendas", 6, 0]]]]],
+  ["Desenvolvedor(a) web", "Criativos e digitais", "site programador desenvolvedor web landing page", [
+    ["Site", [["Landing page", 16, 0], ["Site institucional", 40, 0]]]]],
+  ["Desenvolvedor(a) de apps", "Criativos e digitais", "aplicativo app mobile programador", [
+    ["Aplicativo", [["App simples", 80, 0], ["App com login e banco de dados", 160, 0]]]]],
+  ["Ilustrador(a)", "Criativos e digitais", "ilustracao desenho ilustrador arte", [
+    ["Ilustração", [["Ilustração simples", 3, 0], ["Ilustração completa", 8, 0]]]]],
+  ["Tradutor(a)", "Criativos e digitais", "traducao tradutor interprete", [
+    ["Tradução", [["Página de texto", 1, 0], ["Documento de 10 páginas", 8, 0]]]]],
+  ["Redator(a) de currículos", "Criativos e digitais", "curriculo cv carta de apresentacao", [
+    ["Currículo", [["Currículo simples", 2, 0], ["Currículo com LinkedIn", 3.5, 0]]]]],
+  ["Arquiteto(a)", "Criativos e digitais", "arquitetura projeto arquitetonico planta", [
+    ["Projeto", [["Reforma pequena", 16, 0], ["Casa nova", 60, 0]]]]],
+
+  // ---------- Educação ----------
+  ["Professor(a) particular", "Educação", "aula particular reforco explicacao professor", [
+    ["Aula", [["Aula de 1h", 1, 0], ["Pacote de 4 aulas", 4, 0]]]]],
+  ["Professor(a) de idiomas", "Educação", "ingles espanhol idioma aula de ingles", [
+    ["Aula", [["Aula individual de 1h", 1, 0], ["Aula em grupo de 1h", 1, 0]]]]],
+  ["Professor(a) de música", "Educação", "musica aula de violao piano canto", [
+    ["Aula", [["Aula de 50 min", 0.85, 0], ["Pacote de 4 aulas", 3.4, 0]]]]],
+  ["Instrutor(a) de informática", "Educação", "informatica computador curso word excel", [
+    ["Aula", [["Aula individual de 1h", 1, 0], ["Curso de 8 aulas", 8, 0]]]]],
+  ["Professor(a) de reforço escolar", "Educação", "reforco escolar matematica lição de casa", [
+    ["Aula", [["Aula de 1h", 1, 0], ["Pacote de 4 aulas", 4, 0]]]]],
+  ["Revisor(a) acadêmico", "Educação", "revisao tcc monografia artigo academico", [
+    ["Revisão", [["Até 20 páginas", 4, 0], ["Até 60 páginas", 10, 0]]]]],
+  ["Instrutor(a) de direção", "Educação", "aula de direcao autoescola motorista", [
+    ["Aula prática", [["Aula de 50 min", 0.85, 0], ["Pacote de 5 aulas", 4.25, 0]]]]],
+
+  // ---------- Automotivo ----------
+  ["Mecânico(a)", "Automotivo", "mecanica carro oficina revisao motor", [
+    ["Serviço", [["Troca de óleo", 1, 60], ["Revisão básica", 3, 150]]]]],
+  ["Lavador(a) de carros", "Automotivo", "lavagem lava jato carro lavar carro detalhamento", [
+    ["Lavagem", [["Lavagem simples", 0.75, 8], ["Lavagem completa", 1.5, 20]]]]],
+  ["Funileiro(a)", "Automotivo", "funilaria lataria batida pintura carro", [
+    ["Reparo de lataria", [["Amassado pequeno", 3, 80], ["Porta inteira", 8, 250]]]]],
+  ["Auto elétrico", "Automotivo", "eletrica do carro auto eletrico bateria", [
+    ["Serviço elétrico", [["Diagnóstico", 1, 0], ["Troca de componente", 2, 60]]]]],
+  ["Borracheiro(a)", "Automotivo", "borracharia pneu conserto de pneu", [
+    ["Pneu", [["Conserto de furo", 0.5, 5], ["Troca de pneu", 0.5, 0]]]]],
+  ["Instalador de som e insulfilm", "Automotivo", "insulfilm pelicula som automotivo", [
+    ["Instalação", [["Insulfilm em um vidro", 1.5, 40], ["Insulfilm completo", 4, 180]]]]],
+
+  // ---------- Eventos ----------
+  ["DJ", "Eventos", "dj festa som evento balada", [
+    ["Apresentação", [["Festa de 4h", 4, 0], ["Evento corporativo de 6h", 6, 0]]]]],
+  ["Buffet", "Eventos", "buffet festa comida evento", [
+    ["Serviço de buffet", [["Até 50 convidados", 10, 350], ["Até 150 convidados", 18, 1100]]]]],
+  ["Decorador(a) de festas", "Eventos", "decoracao festa decorador balões", [
+    ["Decoração", [["Decoração simples", 6, 250], ["Decoração completa", 12, 800]]]]],
+  ["Cerimonialista", "Eventos", "cerimonial casamento organizacao de eventos", [
+    ["Assessoria", [["Dia do evento", 10, 0], ["Assessoria completa", 40, 0]]]]],
+  ["Animador(a) infantil", "Eventos", "animacao festa infantil palhaco recreacao", [
+    ["Animação", [["Festa de 2h", 2, 40], ["Festa de 4h", 4, 80]]]]],
+  ["Músico para eventos", "Eventos", "musico banda cantor show evento", [
+    ["Apresentação", [["Voz e violão, 2h", 2, 0], ["Banda, 4h", 4, 0]]]]],
+  ["Locutor(a)", "Eventos", "locucao narracao voz locutor", [
+    ["Gravação", [["Spot de até 30 s", 1, 0], ["Narração de 5 min", 2, 0]]]]],
+
+  // ---------- Alimentação ----------
+  ["Confeiteiro(a)", "Alimentação", "bolo confeitaria doce bolos de pote", [
+    ["Bolo", [["Bolo simples (até 20 fatias)", 4, 60], ["Bolo decorado (até 50 fatias)", 8, 150]]]]],
+  ["Chef de cozinha em domicílio", "Alimentação", "chef cozinheiro jantar cozinha particular", [
+    ["Jantar", [["Jantar para 4 pessoas", 4, 120], ["Jantar para 10 pessoas", 7, 300]]]]],
+  ["Padeiro(a) artesanal", "Alimentação", "pao padaria artesanal fermentacao", [
+    ["Pães", [["Lote de 10 pães", 3, 25], ["Lote de 30 pães", 6, 70]]]]],
+  ["Marmiteiro(a)", "Alimentação", "marmita marmitas quentinha comida caseira", [
+    ["Marmitas", [["Lote de 10", 2.5, 60], ["Lote de 30", 5, 170]]]]],
+  ["Salgadeiro(a) para festas", "Alimentação", "salgados festa coxinha salgadinho", [
+    ["Salgados", [["100 salgados", 4, 90], ["300 salgados", 9, 250]]]]],
+
+  // ---------- Administrativo e jurídico ----------
+  ["Contador(a)", "Administrativo e jurídico", "contabilidade contador imposto mei declaracao", [
+    ["Serviço", [["Abertura de MEI", 2, 0], ["Declaração anual", 3, 0]]]]],
+  ["Advogado(a)", "Administrativo e jurídico", "advocacia advogado consultoria juridica", [
+    ["Consulta", [["Consulta de 1h", 1, 0], ["Elaboração de contrato", 4, 0]]]]],
+  ["Despachante", "Administrativo e jurídico", "despachante documentos cartorio detran", [
+    ["Serviço", [["Documento simples", 2, 20], ["Processo completo", 6, 80]]]]],
+  ["Corretor(a) de imóveis", "Administrativo e jurídico", "imoveis corretor aluguel venda imobiliaria", [
+    ["Intermediação", [["Locação (visita e contrato)", 6, 0], ["Venda (acompanhamento)", 20, 0]]]]],
+  ["Assistente virtual", "Administrativo e jurídico", "assistente virtual secretaria agenda email", [
+    ["Serviço mensal", [["Até 20 horas por mês", 20, 0], ["Até 40 horas por mês", 40, 0]]]]],
+  ["Consultor(a) de negócios", "Administrativo e jurídico", "consultoria negocios gestao empresa", [
+    ["Consultoria", [["Diagnóstico de 2h", 2, 0], ["Projeto de 1 mês", 30, 0]]]]],
+
+  // ---------- Pets ----------
+  ["Banho e tosa", "Pets", "pet petshop banho cachorro tosa gato", [
+    ["Banho e tosa", [["Cão pequeno", 1.5, 15], ["Cão grande", 2.5, 25]]]]],
+  ["Adestrador(a) de cães", "Pets", "adestramento adestrador cachorro treino", [
+    ["Sessão", [["Sessão avulsa de 1h", 1, 0], ["Pacote de 8 sessões", 8, 0]]]]],
+  ["Passeador(a) de cães", "Pets", "passeio cachorro dog walker passear", [
+    ["Passeio", [["Passeio de 30 min", 0.5, 0], ["Passeio de 1h", 1, 0]]]]],
+  ["Veterinário(a) a domicílio", "Pets", "veterinario vet consulta animal domicilio", [
+    ["Atendimento", [["Consulta a domicílio", 1.5, 10], ["Vacinação", 1, 40]]]]],
+  ["Cuidador(a) de pets", "Pets", "hospedagem pet cuidador animais de estimacao", [
+    ["Hospedagem", [["Diária de hospedagem", 2, 10], ["Visita de 1h", 1, 0]]]]],
+
+  // ---------- Outros ----------
+  ["Motoboy / entregador autônomo", "Outros", "entrega motoboy moto frete delivery", [
+    ["Entrega", [["Entrega até 5 km", 0.5, 0], ["Entrega até 15 km", 1, 0]]]]],
+  ["Fotógrafo de eventos", "Outros", "cobertura de evento fotos casamento foto evento", [
+    ["Cobertura", [["Evento de 3h", 4, 0], ["Evento de 8h", 9, 0]]]]],
+  ["Costureiro(a) / ajustes", "Outros", "costura ajuste de roupa alfaiate barra", [
+    ["Ajuste", [["Barra de calça", 1, 3], ["Ajuste de vestido", 2, 5]]]]],
+  ["Sapateiro(a)", "Outros", "conserto de sapato sapataria salto", [
+    ["Conserto", [["Troca de salto", 0.5, 15], ["Solado completo", 1.5, 45]]]]],
+  ["Relojoeiro(a)", "Outros", "relogio conserto relogio bateria", [
+    ["Conserto", [["Troca de bateria", 0.5, 15], ["Revisão completa", 2, 40]]]]]
+];
+
+// Semanas por mês: 52 semanas divididas por 12 meses
+const SEMANAS_MES = 52 / 12;
+
+// ============================================================
+// UTILITÁRIOS
+// ============================================================
+const $ = (id) => document.getElementById(id);
+const brl = (v) => v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+const num = (id) => parseFloat(String($(id).value).replace(",", ".")) || 0;
+const norm = (s) => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+const fmt = (v, casas = 1) => v.toLocaleString("pt-BR", { maximumFractionDigits: casas, minimumFractionDigits: 0 });
+const horasTxt = (h) => `${fmt(h, 1)} h`;
+
+function bigramas(s) {
+  const t = norm(s).replace(/\s+/g, " ");
+  const out = new Map();
+  for (let i = 0; i < t.length - 1; i++) { const b = t.substr(i, 2); out.set(b, (out.get(b) || 0) + 1); }
+  return out;
+}
+function dice(a, b) {
+  if (!a || !b) return 0;
+  const A = bigramas(a), B = bigramas(b);
+  let inter = 0, totA = 0, totB = 0;
+  A.forEach((v) => totA += v);
+  B.forEach((v, k) => { totB += v; if (A.has(k)) inter += Math.min(v, A.get(k)); });
+  return totA + totB ? (2 * inter) / (totA + totB) : 0;
+}
+function pontuar(q, p) {
+  const qn = norm(q);
+  const alvos = [p[0], ...p[2].split(" ")];
+  let melhor = 0;
+  for (const alvo of alvos) {
+    const an = norm(alvo);
+    if (an.startsWith(qn)) melhor = Math.max(melhor, 1);
+    else if (an.includes(qn) && qn.length >= 3) melhor = Math.max(melhor, 0.9);
+    else melhor = Math.max(melhor, dice(qn, an));
+  }
+  return Math.max(melhor, dice(qn, norm(p[0])) * 0.95);
+}
+
+let profSel = null;
+
+// ============================================================
+// BUSCA COM SUGESTÕES
+// ============================================================
+function mostrarSugestoes() {
+  const q = $("buscaProf").value.trim();
+  const lista = $("listaSugg");
+  if (q.length < 2) { lista.classList.add("hidden"); lista.innerHTML = ""; return; }
+  const ranking = PROFISSOES.map((p, i) => ({ p, i, s: pontuar(q, p) })).sort((a, b) => b.s - a.s).slice(0, 6);
+  const exato = ranking[0].s >= 0.9;
+  let html = `<div class="head">${exato ? "Encontradas" : "Nenhuma exata. As mais parecidas"}</div>`;
+  ranking.forEach(({ p, i }) => { html += `<div data-i="${i}">${p[0]}<small>${p[1]}</small></div>`; });
+  lista.innerHTML = html;
+  lista.classList.remove("hidden");
+  lista.querySelectorAll("div[data-i]").forEach((el) => {
+    el.addEventListener("mousedown", (e) => { e.preventDefault(); escolherProf(+el.dataset.i); });
+    el.addEventListener("touchstart", (e) => { e.preventDefault(); escolherProf(+el.dataset.i); }, { passive: false });
+  });
+}
+
+function escolherProf(i) {
+  profSel = PROFISSOES[i];
+  $("buscaProf").value = profSel[0];
+  $("listaSugg").classList.add("hidden");
+  $("profEscolhida").textContent = `Selecionada: ${profSel[0]} (${profSel[1]})`;
+  $("escolhas").classList.remove("hidden");
+  preencher($("servico"), profSel[3].map((s) => s[0]));
+  atualizarVariacoes();
+  $("resultadoServico").classList.add("hidden");
+}
+
+function preencher(el, opcoes) {
+  el.innerHTML = "";
+  opcoes.forEach((o, i) => { const opt = document.createElement("option"); opt.value = i; opt.textContent = o; el.appendChild(opt); });
+}
+
+function atualizarVariacoes() {
+  const serv = profSel[3][$("servico").value];
+  preencher($("variacao"), serv[1].map((v) => v[0]));
+}
+
+// ============================================================
+// HORAS DO MÊS (calculadora de 2 campos)
+// ============================================================
+function horasSemana() { return num("diasSemana") * num("horasDia"); }
+function horasMes() { return horasSemana() * SEMANAS_MES; }
+
+function atualizarHoras() {
+  $("horasSemana").textContent = horasTxt(horasSemana());
+  $("horasMesTxt").textContent = horasTxt(horasMes());
+}
+
+// ============================================================
+// PARÂMETROS COMUNS
+// ============================================================
+function parametros() {
+  return {
+    custosFixos: num("custosFixos"),
+    proLabore: num("proLabore"),
+    horasMes: Math.max(horasMes(), 1),
+    imposto: num("imposto"),
+    iss: num("iss"),
+    cartao: num("taxaCartao"),
+    margem: num("margem")
+  };
+}
+// Parte do preço que sobra depois de impostos, taxas e margem
+function divisor(p) { return Math.max(1 - (p.imposto + p.iss + p.cartao + p.margem) / 100, 0.05); }
+
+// ============================================================
+// CÁLCULO: SERVIÇO
+// ============================================================
+function calcularServico() {
+  if (!profSel) { $("profEscolhida").textContent = "Escolha uma profissão primeiro."; return; }
+  const serv = profSel[3][$("servico").value];
+  const [nomeVar, horasBase, materiais] = serv[1][$("variacao").value];
+  const fator = parseFloat($("experiencia").value);
+  const horas = horasBase * fator;
+  const expTxt = $("experiencia").options[$("experiencia").selectedIndex].text;
+  const p = parametros();
+  const dv = divisor(p);
+
+  const custoHora = (p.custosFixos + p.proLabore) / p.horasMes;   // quanto custa cada hora sua
+  const horaCobrar = custoHora / dv;                               // quanto cobrar por hora, já com impostos e margem
+  const custoServico = materiais + horas * custoHora;
+  const preco = custoServico / dv;
+  const faixaMin = preco * 0.9, faixaMax = preco * 1.1;
+
+  const faturamentoMes = (p.custosFixos + p.proLabore) / dv;      // quanto precisa entrar no mês
+  const atendMes = Math.ceil(faturamentoMes / preco);
+  const atendSem = atendMes / SEMANAS_MES;
+
+  const impV = preco * p.imposto / 100, issV = preco * p.iss / 100;
+  const cartV = preco * p.cartao / 100, margV = preco * p.margem / 100;
+  const sobra = preco - impV - issV - cartV;
+
+  $("resultadoServico").innerHTML = `
+    <div class="res-topo">
+      <div class="pre">Para <b>${profSel[0]}</b>, você deve cobrar, no mínimo, por hora:</div>
+      <div class="hora">${brl(horaCobrar)} <small>por hora</small></div>
+      <p class="explica">Esse valor já inclui impostos, taxas e sua margem. Cada hora que você trabalha precisa render pelo menos isso para você cumprir seus objetivos.</p>
+    </div>
+
+    <div class="grid3">
+      <div class="mini"><b>Preço deste serviço</b><span>${brl(preco)}</span><small>faixa de ${brl(faixaMin)} a ${brl(faixaMax)}</small></div>
+      <div class="mini"><b>Tempo deste serviço</b><span>${horasTxt(horas)}</span><small>${horasTxt(horasBase)} base × ${fmt(fator, 2)} (${expTxt.toLowerCase()})</small></div>
+      <div class="mini"><b>Faturamento mínimo no mês</b><span>${brl(faturamentoMes)}</span><small>para pagar contas e seu salário</small></div>
+    </div>
+
+    <div class="bloco">
+      <h3>Quantos atendimentos por mês?</h3>
+      <p>Com o seu tempo de trabalho de <b>${horasTxt(horasMes())}</b> por mês, você precisa fazer cerca de <b>${atendMes} atendimento${atendMes > 1 ? "s" : ""} deste tipo por mês</b> (aproximadamente ${fmt(atendSem, 1)} por semana).</p>
+      <div class="frase">Se fizer menos que isso, o mês não fecha com o que você quer ganhar. Se fizer mais, sobra lucro.</div>
+    </div>
+
+    <div class="bloco">
+      <h3>De onde vem esse preço de ${brl(preco)}</h3>
+      <table>
+        <tr><td>Materiais<small>agulhas, tintas, descartáveis, produtos usados no atendimento</small></td><td class="v">${brl(materiais)}</td></tr>
+        <tr><td>Seu tempo de trabalho<small>${horasTxt(horas)} × ${brl(custoHora)} por hora (seus custos fixos + salário, divididos pelas horas do mês)</small></td><td class="v">${brl(horas * custoHora)}</td></tr>
+        <tr class="total"><td>Custo do serviço</td><td class="v">${brl(custoServico)}</td></tr>
+        <tr><td>Impostos (${fmt(p.imposto)}%)<small>vai para o governo, calculado sobre o preço final</small></td><td class="v">${brl(impV)}</td></tr>
+        <tr><td>ISS da prefeitura (${fmt(p.iss)}%)<small>imposto municipal sobre serviços</small></td><td class="v">${brl(issV)}</td></tr>
+        <tr><td>Taxa da maquininha (${fmt(p.cartao)}%)<small>cobrada quando o cliente paga no cartão</small></td><td class="v">${brl(cartV)}</td></tr>
+        <tr><td>Sua margem (${fmt(p.margem)}%)<small>lucro e reserva para imprevistos</small></td><td class="v">${brl(margV)}</td></tr>
+        <tr class="total"><td>Preço final ao cliente</td><td class="v">${brl(preco)}</td></tr>
+      </table>
+      <div class="frase">Depois de impostos e taxas, sobram <b>${brl(sobra)}</b> deste atendimento para pagar seu custo de trabalho e sua margem.</div>
+    </div>
+
+    <div class="bloco">
+      <h3>Resumo em uma frase</h3>
+      <p>Para ganhar <b>${brl(p.proLabore)}</b> por mês e pagar <b>${brl(p.custosFixos)}</b> de custos, você precisa faturar cerca de <b>${brl(faturamentoMes)}</b> com impostos incluídos. Cobrando <b>${brl(preco)}</b> por este serviço, são cerca de <b>${atendMes}</b> atendimentos por mês.</p>
+    </div>
+
+    <p class="aviso">Estimativa com os tempos e materiais de exemplo. Ajuste com a sua experiência real.</p>
+  `;
+  $("resultadoServico").classList.remove("hidden");
+  $("resultadoServico").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+// ============================================================
+// CÁLCULO: PRODUTO
+// ============================================================
+function calcularProduto() {
+  const p = parametros();
+  const dv = divisor(p);
+  const mat = num("matProduto"), emb = num("embProduto"), min = num("tempoProduto");
+  const nome = $("nomeProduto").value.trim() || "seu produto";
+
+  const custoHora = (p.custosFixos + p.proLabore) / p.horasMes;
+  const horaCobrar = custoHora / dv;
+  const horas = min / 60;
+  const maoObra = horas * custoHora;
+  const custoUnit = mat + emb + maoObra;
+  const preco = custoUnit / dv;
+  const faturamentoMes = (p.custosFixos + p.proLabore) / dv;
+  const unidadesMes = Math.ceil(faturamentoMes / preco);
+  const impV = preco * (p.imposto + p.iss + p.cartao) / 100;
+  const margV = preco * p.margem / 100;
+
+  $("resultadoProduto").innerHTML = `
+    <div class="res-topo">
+      <div class="pre">Para <b>${nome}</b>, você deve cobrar por unidade:</div>
+      <div class="hora">${brl(preco)} <small>por unidade</small></div>
+      <p class="explica">Esse preço já inclui o seu tempo, impostos, taxas e sua margem. Enquanto produz, você ganha ${brl(horaCobrar)} por hora.</p>
+    </div>
+
+    <div class="grid3">
+      <div class="mini"><b>Valor da sua hora</b><span>${brl(horaCobrar)}</span><small>para cobrar do seu tempo</small></div>
+      <div class="mini"><b>Tempo por unidade</b><span>${fmt(min, 0)} min</span><small>preparo e acabamento</small></div>
+      <div class="mini"><b>Unidades por mês</b><span>${unidadesMes}</span><small>para fechar o mês com ${brl(p.proLabore)} de salário</small></div>
+    </div>
+
+    <div class="bloco">
+      <h3>De onde vem esse preço de ${brl(preco)}</h3>
+      <table>
+        <tr><td>Ingredientes ou material<small>o que entra no produto</small></td><td class="v">${brl(mat)}</td></tr>
+        <tr><td>Embalagem<small>caixa, saquinho, etiqueta</small></td><td class="v">${brl(emb)}</td></tr>
+        <tr><td>Seu tempo<small>${fmt(min, 0)} min × ${brl(custoHora)} por hora de custo</small></td><td class="v">${brl(maoObra)}</td></tr>
+        <tr class="total"><td>Custo por unidade</td><td class="v">${brl(custoUnit)}</td></tr>
+        <tr><td>Impostos, ISS e taxa do cartão<small>juntos, sobre o preço final</small></td><td class="v">${brl(impV)}</td></tr>
+        <tr><td>Sua margem (${fmt(p.margem)}%)<small>lucro e reserva</small></td><td class="v">${brl(margV)}</td></tr>
+        <tr class="total"><td>Preço final por unidade</td><td class="v">${brl(preco)}</td></tr>
+      </table>
+    </div>
+
+    <div class="bloco">
+      <h3>Resumo em uma frase</h3>
+      <p>Para ganhar <b>${brl(p.proLabore)}</b> por mês e pagar <b>${brl(p.custosFixos)}</b> de custos, você precisa vender cerca de <b>${unidadesMes}</b> unidades por mês a <b>${brl(preco)}</b> cada.</p>
+    </div>
+
+    <p class="aviso">Estimativa. Ajuste os custos com os valores reais de um lote que você já fez.</p>
+  `;
+  $("resultadoProduto").classList.remove("hidden");
+  $("resultadoProduto").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+// ============================================================
+// EVENTOS
+// ============================================================
+$("buscaProf").addEventListener("input", () => {
+  profSel = null;
+  $("escolhas").classList.add("hidden");
+  $("profEscolhida").textContent = "";
+  mostrarSugestoes();
+});
+$("buscaProf").addEventListener("blur", () => setTimeout(() => $("listaSugg").classList.add("hidden"), 150));
+$("servico").addEventListener("change", () => { atualizarVariacoes(); $("resultadoServico").classList.add("hidden"); });
+$("variacao").addEventListener("change", () => $("resultadoServico").classList.add("hidden"));
+$("diasSemana").addEventListener("change", atualizarHoras);
+$("horasDia").addEventListener("input", atualizarHoras);
+$("calcularServico").addEventListener("click", calcularServico);
+$("calcularProduto").addEventListener("click", calcularProduto);
+
+$("tabServico").addEventListener("click", () => trocarAba("servico"));
+$("tabProduto").addEventListener("click", () => trocarAba("produto"));
+function trocarAba(aba) {
+  const ser = aba === "servico";
+  $("blocoServico").classList.toggle("hidden", !ser);
+  $("blocoProduto").classList.toggle("hidden", ser);
+  $("tabServico").classList.toggle("on", ser);
+  $("tabProduto").classList.toggle("on", !ser);
+}
+
+atualizarHoras();
+</script>
+</body>
+</html>
