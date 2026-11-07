@@ -1,0 +1,16 @@
+{
+  "name": "Quanto eu devo cobrar?",
+  "short_name": "Quanto cobrar",
+  "description": "Calculadora gratuita para autônomos: descubra quanto cobrar por hora e por serviço, com impostos e taxas explicados em linguagem simples.",
+  "lang": "pt-BR",
+  "start_url": "/site-studio/calculadora/",
+  "scope": "/site-studio/calculadora/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f4f1ec",
+  "theme_color": "#1f1d1a",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}
